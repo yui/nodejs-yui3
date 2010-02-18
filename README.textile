@@ -30,10 +30,8 @@ h2. Including the files
 h2. Using YUI
 
 <pre class="console">
-//Mixin the YUI file so we have a global YUI object 
-process.mixin(GLOBAL, require('./yui3/build/yui/yui-debug'));
-//Mixin the bootstrapper that replaces a couple of YUI modules
-process.mixin(GLOBAL, require('./node-yui3'));
+// load YUI
+var YUI = require("./node-yui3").YUI;
 
 //sys.puts('After: ' + sys.inspect(process.memoryUsage()));
 
