@@ -1,0 +1,12 @@
+{
+  "name" : "yui3",
+  "description" : "YUI 3 Library on NodeJS",
+  "author" : "Dav Glass <davglass@gmail.com>",
+  "contributors" : [ "Isaac Z. Schlueter <i@izs.me>" ],
+  "engines" : ["node"],
+  "directories" : { "lib" : "lib" },
+  "main" : "./lib/node-yui3",
+  "repositories" : [
+    { "type":"git", "url":"http://github.com/davglass/nodejs-yui3.git" }
+  ]
+}
