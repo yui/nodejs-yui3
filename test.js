@@ -1,6 +1,6 @@
 var sys = require('sys');
 
-var YUI = require("./node-yui3").YUI;
+var YUI = require("./lib/node-yui3").YUI;
 
 // TODO: This should pass, but currently doesn't.
 // yui-core.js creates a global YUI unnecessarily.
