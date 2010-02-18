@@ -1,4 +1,5 @@
-var sys = require('sys');
+var sys = require('sys'),
+    YUI = exports.YUI = require('./yui3/build/yui/yui-debug').YUI;
 
 YUI.config.loaderPath = 'loader/loader-debug.js';
 YUI.config.base = './yui3/build/';
@@ -15,7 +16,8 @@ YUI.add('yui-log', function(Y) {
                 //Should we use this?
                 str = sys.inspect(str);
             }
-            sys.puts('[' + t.toUpperCase() + ']: ' + m + str);
+            // output log messages to stderr
+            sys.error('[' + t.toUpperCase() + ']: ' + m + str);
         }
     };
 });
@@ -24,18 +26,29 @@ YUI.add('yui-log', function(Y) {
 YUI.add('get', function(Y) {
     Y.Get = function() {};
     Y.Get.script = function(s, cb) {
-        url = s.replace('.js', '');
+        url = s.replace(/\.js$/, '');
         Y.log('URL: ' + url, 'info', 'get');
-        process.mixin(GLOBAL, require(url));
-        if (Y.Lang.isFunction(cb.onEnd)) {
-            cb.onEnd.call(Y, cb.data);
-        }
-        if (Y.Lang.isFunction(cb.onSuccess)) {
-            cb.onSuccess.call(Y, cb);
-        }
-        if (Y.Lang.isFunction(cb.onComplete)) {
-            cb.onComplete.call(Y);
-        }
+        // doesn't need to be blocking, so don't block.
+        require.async(url).addCallback(function (mod) {
+            process.mixin(Y, mod);
+            if (Y.Lang.isFunction(cb.onEnd)) {
+                cb.onEnd.call(Y, cb.data);
+            }
+            if (Y.Lang.isFunction(cb.onSuccess)) {
+                cb.onSuccess.call(Y, cb);
+            }
+            if (Y.Lang.isFunction(cb.onComplete)) {
+                cb.onComplete.call(Y, cb);
+            }
+        }).addErrback(function (er) {
+            // is onError a thing?  I dunno.  It should be, if it isn't.  --isaacs
+            if (Y.Lang.isFunction(cb.onError)) {
+                cb.onError.call(Y, er, cb);
+            }
+            if (Y.Lang.isFunction(cb.onComplete)) {
+                cb.onComplete.call(Y, cb);
+            }
+        });
     };
 });
 
