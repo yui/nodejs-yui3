@@ -21,17 +21,15 @@ That should pull in the latest build of the /yui/yui3 repo.
 h2. Including the files
 
 <pre class="console">
-    //Mixin the YUI file so we have a global YUI object 
-    process.mixin(GLOBAL, require('./yui3/build/yui/yui-debug'));
-    //Mixin the bootstrapper that replaces a couple of YUI modules
-    process.mixin(GLOBAL, require('./node-yui3'));
+    // get the exported YUI object
+    var YUI = require('./lib/node-yui3')).YUI;
 </pre>
 
 h2. Using YUI
 
 <pre class="console">
 // load YUI
-var YUI = require("./node-yui3").YUI;
+var YUI = require("./lib/node-yui3").YUI;
 
 //sys.puts('After: ' + sys.inspect(process.memoryUsage()));
 
