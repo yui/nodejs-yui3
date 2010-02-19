@@ -15,8 +15,16 @@ var YUI = require("./lib/node-yui3").YUI;
 //Now use non-DOM related YUI utilities
 YUI({
     filter: 'debug',
-    debug: true
-}).use('io-base', 'json', 'base', function(Y) {
+    debug: true,
+    modules: {
+        'gallery-yql': {
+            fullpath: 'http://yui.yahooapis.com/gallery-2010.01.27-20/build/gallery-yql/gallery-yql-min.js',
+            requires: ['get','event-custom'],
+            optional: [],
+            supersedes: []
+        }
+    }
+}).use('io-base', 'json', 'base', 'gallery-yql', function(Y) {
 
     //sys.puts('Inside: ' + sys.inspect(process.memoryUsage()));
     //Logger outputs with sys.puts
@@ -47,5 +55,16 @@ YUI({
         //Y.log(o, 'debug');
     });
     o.test(); //Should fire the one:foo Event.
+
+    //sys.puts(sys.inspect(Y));
+    
+    
+    var q1 = new Y.yql('select * from github.user.info where (id = "davglass")');
+    q1.on('query', function(r) {
+        //Do something here.
+        sys.puts(sys.inspect(r));
+    });
+    
+
 });
 
