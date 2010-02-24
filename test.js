@@ -3,14 +3,10 @@ var sys = require('sys');
 var YUI = require("./lib/node-yui3").YUI;
 
 // TODO: This should pass, but currently doesn't.
-// yui-core.js creates a global YUI unnecessarily.
-// Rather than testing exports and assigning the global to the exports object,
-// it should sniff for exports, and if not found, set it to the global object,
-// and then do exports.YUI = YUI; in either case, thus putting YUI where it
-// belongs for the environment in question.
-// Replying on global leakage is ill-advised if not absolutely necessary.
-
-// require("assert").equal( global.YUI, undefined, "global yui created");
+// This will work for YUI core, but any submodules are in different files
+// This will work better once the 3.1.0 version of YUI is available
+// And you can combo handle all the submodules into one request.
+//require("assert").equal( global.YUI, undefined, "global yui created");
 
 //Now use non-DOM related YUI utilities
 YUI({
@@ -19,12 +15,10 @@ YUI({
     modules: {
         'gallery-yql': {
             fullpath: 'http://yui.yahooapis.com/gallery-2010.01.27-20/build/gallery-yql/gallery-yql-min.js',
-            requires: ['get','event-custom'],
-            optional: [],
-            supersedes: []
+            requires: ['get','event-custom']
         }
     }
-}).use('io-base', 'json', 'base', 'gallery-yql', function(Y) {
+}).use('json', 'base', 'gallery-yql', function(Y) {
 
     //sys.puts('Inside: ' + sys.inspect(process.memoryUsage()));
     //Logger outputs with sys.puts
@@ -58,13 +52,10 @@ YUI({
 
     //sys.puts(sys.inspect(Y));
     
-    
     var q1 = new Y.yql('select * from github.user.info where (id = "davglass")');
     q1.on('query', function(r) {
         //Do something here.
         sys.puts(sys.inspect(r));
     });
-    
 
 });
-
