@@ -55,7 +55,7 @@ YUI({
     var q1 = new Y.yql('select * from github.user.info where (id = "davglass")');
     q1.on('query', function(r) {
         //Do something here.
-        sys.puts(sys.inspect(r));
+        //sys.puts(sys.inspect(r));
     });
 
 });
