@@ -8,16 +8,14 @@ var YUI = require("./lib/node-yui3").YUI;
 // And you can combo handle all the submodules into one request.
 //require("assert").equal( global.YUI, undefined, "global yui created");
 
+
 //Now use non-DOM related YUI utilities
 YUI({
+    //Only set these if you want to load locally
+    //loaderPath: 'loader/loader-debug.js',
+    //base: './yui3/build/',
     filter: 'debug',
-    debug: true,
-    modules: {
-        'gallery-yql': {
-            fullpath: 'http://yui.yahooapis.com/gallery-2010.01.27-20/build/gallery-yql/gallery-yql-min.js',
-            requires: ['get','event-custom']
-        }
-    }
+    debug: true
 }).use('json', 'base', 'gallery-yql', function(Y) {
 
     //sys.puts('Inside: ' + sys.inspect(process.memoryUsage()));
@@ -55,7 +53,7 @@ YUI({
     var q1 = new Y.yql('select * from github.user.info where (id = "davglass")');
     q1.on('query', function(r) {
         //Do something here.
-        //sys.puts(sys.inspect(r));
+        sys.puts(sys.inspect(r));
     });
 
 });
