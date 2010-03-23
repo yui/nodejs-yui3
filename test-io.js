@@ -16,7 +16,7 @@ YUI({
     base: './yui3/build/',
     filter: 'debug',
     debug: true
-}).use('json', 'base', 'io-node', function(Y) {
+}).use('json', 'base', 'io-nodejs', function(Y) {
 
     var url = 'http:/'+'/yuilibrary.com/gallery/api/user/davglass';
     
@@ -24,7 +24,7 @@ YUI({
     
     Y.io(url, {
         xdr: {
-            use: 'node'
+            use: 'nodejs'
         },
         on: {
             start: function() {
