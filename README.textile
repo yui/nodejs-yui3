@@ -36,7 +36,7 @@ var YUI = require("./lib/node-yui3").YUI;
 YUI({
     filter: 'debug',
     debug: true
-}).use('gallery-yql', 'json', 'base', function(Y) {
+}).use('gallery-yql', 'json', 'base', 'io-nodejs', function(Y) {
 
     //sys.puts('Inside: ' + sys.inspect(process.memoryUsage()));
     //Logger outputs with sys.puts
