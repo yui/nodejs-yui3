@@ -4,8 +4,7 @@ This node.js module attempts to setup and bootstrap a working YUI 3 instance.
 It does not support any DOM manipulation, but it gives you our class management
 and language extras.
 
-I am working on an IO replacement to use the internal node.js methods instead of XMLHttpRequest
-
+This module includes support for remote script loading via Y.Get.script() and remote data fetching via Y.io.
 
 h2. Setup this repo
 
@@ -37,14 +36,6 @@ var YUI = require("./lib/node-yui3").YUI;
 YUI({
     filter: 'debug',
     debug: true
-    modules: {
-        'gallery-yql': {
-            fullpath: 'http://yui.yahooapis.com/gallery-2010.01.27-20/build/gallery-yql/gallery-yql-min.js',
-            requires: ['get','event-custom'],
-            optional: [],
-            supersedes: []
-        }
-    }
 }).use('gallery-yql', 'json', 'base', function(Y) {
 
     //sys.puts('Inside: ' + sys.inspect(process.memoryUsage()));
@@ -83,6 +74,26 @@ YUI({
         //Do something here.
         sys.puts(sys.inspect(r));
     });
+
+    var url = 'http:/'+'/yuilibrary.com/gallery/api/user/davglass';
+    //url = 'http:/'+'/query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20location%3D90210&format=json';
+    
+    Y.io(url, {
+        xdr: {
+            use: 'nodejs'
+        },
+        on: {
+            start: function() {
+                Y.log('Start IO', 'info', 'TEST');
+            },
+            success: function(id, o) {
+                //Y.log(o.responseText);
+                Y.log(Y.JSON.parse(o.responseText));
+            }
+        }
+    });
+
+
 });
 </pre>
 
