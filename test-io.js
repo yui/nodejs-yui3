@@ -20,7 +20,7 @@ YUI({
 
     var url = 'http:/'+'/yuilibrary.com/gallery/api/user/davglass';
     
-    var url2 = 'http:/'+'/query.yahooapis.com/v1/public/yql?q=select%20*%20from%20search.suggest%20where%20query%3D%22madonna%22&format=json';
+    var url2 = 'http:/'+'/localhost/~davglass/node-post/';
     
     Y.io(url, {
         xdr: {
@@ -32,7 +32,7 @@ YUI({
             },
             success: function(id, o) {
                 //Y.log(o.responseText);
-                Y.log(Y.JSON.parse(o.responseText));
+                Y.log(Y.JSON.parse(o.responseText).userinfo);
             }
         }
     });
@@ -42,13 +42,18 @@ YUI({
         xdr: {
             use: 'nodejs'
         },
+        method: 'POST',
+        headers: {
+            foo: 'bar'
+        },
+        data: 'test=post&this=data&testing=three',
         on: {
             start: function() {
                 Y.log('Start IO', 'info', 'TEST');
             },
             success: function(id, o) {
                 //Y.log(o.responseText);
-                Y.log(Y.JSON.parse(o.responseText).query.results);
+                Y.log(Y.JSON.parse(o.responseText));
             }
         }
     });
