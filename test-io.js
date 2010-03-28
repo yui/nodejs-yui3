@@ -6,6 +6,8 @@ var YUI = require("./lib/node-yui3").YUI;
 // This will work for YUI core, but any submodules are in different files
 // This will work better once the 3.1.0 version of YUI is available
 // And you can combo handle all the submodules into one request.
+
+
 //require("assert").equal( global.YUI, undefined, "global yui created");
 
 
