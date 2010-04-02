@@ -233,6 +233,7 @@ var runTests = function() {
 
                 html = '<input name="test-input" type="radio">';
                 el = Y.DOM.create(html);
+
                 Assert.areEqual('radio', el.type, html);
                 Assert.areEqual('test-input', el.name, html);
 
@@ -321,10 +322,10 @@ var runTests = function() {
                 Assert.areEqual('TR', el.tagName, html);
                 Assert.areEqual(2, el.childNodes.length, html);
 
-                html = '<iframe src="http://search.yahoo.com/" id="yui-iframetest"></iframe>';
-                el = Y.DOM.create(html);
-                Assert.areEqual('http://search.yahoo.com/', el.src, html);
-                Assert.areEqual('yui-iframetest', el.id, html);
+                //html = '<iframe src="http://search.yahoo.com/" id="yui-iframetest"></iframe>';
+                //el = Y.DOM.create(html);
+                //Assert.areEqual('http://search.yahoo.com/', el.src, html);
+                //Assert.areEqual('yui-iframetest', el.id, html);
 
 /*
                 html = '<scr' + 'ipt src="http://search.yahoo.com/"></scr' + 'ipt>';
@@ -366,6 +367,7 @@ var runTests = function() {
 
                 html = '<option>foo</option>';
                 el = Y.DOM.create(html);
+                
                 document.getElementById('test-select').appendChild(el);
                 Assert.isFalse(el.selected, 'el.selected');
 
@@ -462,8 +464,7 @@ var runTests = function() {
                 // textarea
                 id = 'test-textarea-textvalue';
                 val = 'textarea text';
-
-
+                
                 Assert.areEqual(val, Y.DOM.getValue(Y.DOM.byId(id)), id);
 
                 Y.DOM.setValue(Y.DOM.byId(id), 'new value');
@@ -712,6 +713,11 @@ var runTests = function() {
                 rgb = "rgb(97, 11, 56)" ; //610B38
                 hex = Y.Color.toHex(rgb);
                 Assert.areSame(hex, "#610B38", " shoudl be #610B38");
+            },
+            test_indoc: function() {
+                Assert.isTrue(Y.DOM.inDoc(Y.DOM.byId('bd')), '#bd shows not in doc');
+                var el = document.createElement('foo');
+                Assert.isFalse(Y.DOM.inDoc(el), 'foo shows in doc');
             }
 
         })); 
@@ -728,18 +734,18 @@ var runTests = function() {
     fs.readFile('./test/dom.html', encoding="utf-8", function(err, data) {
         ///Y.log(data);
         document.body.innerHTML = data;
-        //Y.log(document.body.outerHTML);
+        //Y.log(document.body);
         
         Y.log('Document loaded, run tests..');
-        /*
-        var ids = document._ownerDocument._ids,
+        
+        var ids = document._ids,
             count = 0;
         for (var i in ids) {
-            sys.puts('id: ' + i);
+            //sys.puts('id: ' + i);
             count++;
         }
         sys.puts('# of ids: ' + count);
-        */
+        
         runTests();
     });
 

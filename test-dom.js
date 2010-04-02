@@ -34,7 +34,7 @@ YUI({
 
 
     var simple = true;
-    //var simple = false;
+    var simple = false;
     
     if (simple) {
         var i = Y.Node.create('<i>Test This</i>');
@@ -66,17 +66,22 @@ YUI({
 
         var div = document.createElement('div');
         div.id = 'demo';
-        div.innerHTML = '<ul><li><a href="#foo">foo</a></li><li><a href="#bar">bar</a></li><li><a href="#baz">baz</a></li></ul><div><div id="foo">foo content</div><div id="bar">bar content</div><div id="baz">baz content</div></div>';
+        //div.innerHTML = '<ul><li><a href="#foo">foo</a></li><li><a href="#bar">bar</a></li><li><a href="#baz">baz</a></li></ul><div><div id="foo">foo content</div><div id="bar">bar content</div><div id="baz">baz content</div></div>';
         document.body.appendChild(div);
-
-        Y.log('Creating the TabView..');
+        
+    
+        /*
+        Y.log('Creating the TabView from source..');
+        
         var tabview = new Y.TabView({
             srcNode: '#demo'
         });
 
+        Y.log('Rendering..');
         tabview.render();
+        */
         
-        /*
+        Y.log('Creating the TabView from script..');
         var tabview = new Y.TabView({
             children: [{
                 label: 'foo',
@@ -89,14 +94,15 @@ YUI({
                 content: '<p>baz content</p>'
             }]
         });
-        */
+        
 
         //sys.puts('Inside5: ' + sys.inspect(process.memoryUsage()));
         //sys.puts(sys.inspect(document, false, null));
         //sys.puts(sys.inspect(tabview, false, null));
-        //tabview.render('#demo');
         Y.log('Rendering..');
-        //tabview.render(div);
+        //tabview.render('#demo');
+        tabview.render(div);
+        
         Y.log('Done..');
         Y.log(div.outerHTML, 'HTML');
     }
