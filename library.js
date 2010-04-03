@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var sys = require('sys');
 
 var YUI = require("./lib/node-yui3").YUI;

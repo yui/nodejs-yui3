@@ -37,7 +37,7 @@ YUI({
     div.id = 'demo';
     document.body.appendChild(div);
     
-    Y.log('Creating the TabView from script..');
+    Y.log('Creating the Slider from script..');
     // Default everything
     var slider = new Y.Slider();
     Y.log('Rendering..');

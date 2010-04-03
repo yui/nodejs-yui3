@@ -1,7 +1,9 @@
+#!/usr/bin/env node
+
 var sys = require('sys'),
     fs = require('fs');
 
-var YUI = require("./lib/node-yui3").YUI;
+var YUI = require("../lib/node-yui3").YUI;
 
 // TODO: This should pass, but currently doesn't.
 // This will work for YUI core, but any submodules are in different files
@@ -713,13 +715,7 @@ var runTests = function() {
                 rgb = "rgb(97, 11, 56)" ; //610B38
                 hex = Y.Color.toHex(rgb);
                 Assert.areSame(hex, "#610B38", " shoudl be #610B38");
-            },
-            test_indoc: function() {
-                Assert.isTrue(Y.DOM.inDoc(Y.DOM.byId('bd')), '#bd shows not in doc');
-                var el = document.createElement('foo');
-                Assert.isFalse(Y.DOM.inDoc(el), 'foo shows in doc');
             }
-
         })); 
         Y.Test.Runner.add(suite);
 
@@ -731,7 +727,7 @@ var runTests = function() {
 
     Y.log('JSDom testing..');
     //sys.puts('Inside1: ' + sys.inspect(process.memoryUsage()));
-    fs.readFile('./test/dom.html', encoding="utf-8", function(err, data) {
+    fs.readFile('./dom.html', encoding="utf-8", function(err, data) {
         ///Y.log(data);
         document.body.innerHTML = data;
         //Y.log(document.body);
