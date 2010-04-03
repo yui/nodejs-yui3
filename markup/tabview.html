@@ -1,0 +1,31 @@
+<html>
+    <head></head>
+<body>
+<script src="http://yui.yahooapis.com/3.1.0/build/yui/yui-debug.js"></script>
+<script>
+YUI({
+}).use('event', 'node-base', 'tabview', function(Y) {
+
+    var div = document.createElement('div');
+    div.id = 'demo';
+    div.innerHTML = '<ul><li><a href="#foo">foo</a></li><li><a href="#bar">bar</a></li><li><a href="#baz">baz</a></li></ul><div><div id="foo">foo content</div><div id="bar">bar content</div><div id="baz">baz content</div></div>';
+    document.body.appendChild(div);
+    
+
+    Y.log('Creating the TabView from source..');
+    Y.log(Y.one('#demo'));
+
+    var tabview = new Y.TabView({
+        srcNode: '#demo'
+    });
+
+    Y.log('Rendering..');
+    tabview.render();
+    
+    Y.log('Done..');
+    Y.log(div.outerHTML, 'HTML');
+
+});
+</script>
+</body>
+</html>
