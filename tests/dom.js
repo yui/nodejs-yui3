@@ -104,7 +104,7 @@ var runTests = function() {
                 
 
 
-                content = '   testing     text      content    ';
+                content = '  testing     text      content    ';
                 Y.DOM.setText(node, content);
                 Assert.areEqual(content, Y.DOM.getText(node, content), 'setText("' + content + '")');
 
