@@ -19,7 +19,12 @@ ln -s ../../yui3 ./
 </pre>
 
 
-That should pull in the latest build of the /yui/yui3 repo.
+That should make everything work.
+
+Now you can run this from the nodejs-yui3 root:
+<pre class="console">
+    node ./test.js
+</pre>
 
 h2. Including the files
 
