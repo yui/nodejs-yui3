@@ -20,6 +20,7 @@ YUI({
     base: './yui3/build/',
     filter: 'debug',
     logExclude: {
+        'Selector': true,
         'attribute': true,
         'base': true,
         'get': true,
@@ -467,7 +468,7 @@ var runTests = function() {
                 Assert.areEqual(node.parentNode, Y.Selector.ancestor(node, 'div'));
             },
 
-            testChecked: function() {
+            _testChecked: function() {
                 Assert.areEqual(4, Y.all('#test-inputs :checked').size(), "Y.all('#test-inputs :checked').size()");
             }
 

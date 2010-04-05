@@ -41,7 +41,7 @@ YUI({
 
     var div = document.createElement('div');
     div.id = 'foo';
-    div.innerHTML = '<em>Test</em> this <strong id="bax">awesome <u>shit..</u></strong>';
+    div.innerHTML = '<em id="foo:bar">Test</em> this <strong id="bax">awesome <u>shit..</u></strong>';
     document.body.appendChild(div);
     
     var foo = Y.one('#foo');
@@ -65,8 +65,12 @@ YUI({
     Y.log(foo.get('className'), 'classname');
     Y.log(Y.Node.getDOMNode(foo).outerHTML, 'HTML');
 
+    Y.log(Y.one('body'), 'BODY');
+    Y.log(Y.all('body, div', null, true), 'BODY');
+
     Y.log(document.body.outerHTML, 'HTML');
-    //Y.log(document.getElementById('bax').getAttribute('id'), 'HTML');
+    Y.log(document.getElementById('foo\:bar'), 'HTML');
+    Y.log(document.getElementById('foo:bar'), 'HTML');
 
     //Y.log(document.getElementById('bax').outerHTML, 'HTML');
     

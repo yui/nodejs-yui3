@@ -122,10 +122,9 @@ var runTests = function() {
                 }), 'children(main, fn)');
 */
             },           
-            /* {{{ Style Tests
             test_getStyle: function() {
-                Assert.areEqual('left',
-                        Y.DOM.getStyle(foo, 'float'), 'getStyle(foo, "float")');
+             //   Assert.areEqual('left',
+               //         Y.DOM.getStyle(foo, 'float'), 'getStyle(foo, "float")');
 
                 doc.style.marginBottom = '10px';
 
@@ -159,7 +158,8 @@ var runTests = function() {
 
                 Y.DOM.setStyle(ft, 'display', 'none');
                 Assert.areEqual('none', Y.DOM.getStyle(ft, 'display'), "Y.DOM.setStyle(ft, 'display', 'none')");
-
+                
+                /*
                 Y.DOM.setStyle(ft, 'display', null);
                 Assert.areEqual('block', Y.DOM.getStyle(ft, 'display'), "Y.DOM.setStyle(ft, 'display', null)");
 
@@ -172,7 +172,6 @@ var runTests = function() {
                 Y.DOM.setStyle(ft, 'opacity', 0);
                 Y.DOM.setStyle(ft, 'opacity', '');
                 Assert.areEqual(0.75, Y.DOM.getStyle(ft, 'opacity'), "Y.DOM.setStyle(ft, 'opacity', '')");
-
                 Y.DOM.setStyle(ft, 'height', '100');
                 Assert.areEqual('100px', Y.DOM.getStyle(ft, 'height'),
                     "Y.DOM.setStyle(ft, 'height', '100')");
@@ -185,6 +184,7 @@ var runTests = function() {
 
                 Assert.areEqual('200px', Y.DOM.getStyle(ft, 'height'),
                     "Y.DOM.setStyle(ft, 'height', '')");
+                */
             },
 
                 test_styleDefaultUnit: function() {
@@ -215,7 +215,6 @@ var runTests = function() {
                     Y.DOM.setStyle(node, attr, num);
                     Assert.areEqual(value, Y.DOM.getStyle(node, attr), attr + ': ' + num);
                 },
-            }}} */
             test_create: function() {
                 var html = '';
                 var el = Y.DOM.create(html);
@@ -324,10 +323,10 @@ var runTests = function() {
                 Assert.areEqual('TR', el.tagName, html);
                 Assert.areEqual(2, el.childNodes.length, html);
 
-                //html = '<iframe src="http://search.yahoo.com/" id="yui-iframetest"></iframe>';
-                //el = Y.DOM.create(html);
-                //Assert.areEqual('http://search.yahoo.com/', el.src, html);
-                //Assert.areEqual('yui-iframetest', el.id, html);
+                html = '<iframe src="http://search.yahoo.com/" id="yui-iframetest"></iframe>';
+                el = Y.DOM.create(html);
+                Assert.areEqual('http://search.yahoo.com/', el.src, html);
+                Assert.areEqual('yui-iframetest', el.id, html);
 
 /*
                 html = '<scr' + 'ipt src="http://search.yahoo.com/"></scr' + 'ipt>';
