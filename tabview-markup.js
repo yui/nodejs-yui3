@@ -20,13 +20,13 @@ YUI({
     base: './yui3/build/',
     filter: 'debug',
     logExclude: {
-        //'attribute': true,
-        //'base': true,
-        //'get': true,
-        //'loader': true,
-        //'yui': true,
-        //'widget': true,
-        //'event': true
+        'attribute': true,
+        'base': true,
+        'get': true,
+        'loader': true,
+        'yui': true,
+        'widget': true,
+        'event': true
     },
     debug: true
 }).use('event', 'node-base', 'tabview', function(Y) {

@@ -460,6 +460,7 @@ var runTests = function() {
                 //ArrayAssert.itemsAreEqual($('#demo-first-child ~ p'), $('~ p', Y.DOM.byId('demo-first-child')), '#demo-first-child ~ div');
             },
 
+
             testAncestor: function() {
                 var node = Y.DOM.byId('demo-first-child');
                 Assert.isNull(Y.Selector.ancestor(node, 'p'));

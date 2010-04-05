@@ -72,6 +72,9 @@ YUI({
     Y.log(document.getElementById('foo\:bar'), 'HTML');
     Y.log(document.getElementById('foo:bar'), 'HTML');
 
+
+    Y.log(document.parentNode, 'document.parentNode');
+
     //Y.log(document.getElementById('bax').outerHTML, 'HTML');
     
 });
