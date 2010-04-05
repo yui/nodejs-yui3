@@ -8,12 +8,16 @@ This module includes support for remote script loading via Y.Get.script() and re
 
 h2. Setup this repo
 
-I am using a submodule of the official YUI 3 repository, so you need to issue this after you pull this fork:
-
 <pre class="console">
-    git submodule init
-    git submodule update
+git clone git://github.com/davglass/nodejs-yui3.git
+
+git clone git://github.com/yui/yui3.git
+
+cd nodejs-yui3/lib
+
+ln -s ../../yui3 ./
 </pre>
+
 
 That should pull in the latest build of the /yui/yui3 repo.
 
