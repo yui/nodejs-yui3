@@ -9,10 +9,8 @@ See "JSDom Support" below for DOM manipulation.
 h2. Setup this repo
 
 Clone this project, then do this:
-<pre class="console">
-    cd nodejs-yui3/lib
-    git clone git://github.com/yui/yui3.git
-</pre>
+<pre class="console">cd nodejs-yui3/lib
+git clone git://github.com/yui/yui3.git</pre>
 
 You should go into that repo every now and then and do a git pull to keep it up to date with the latest YUI source.
 
@@ -32,11 +30,11 @@ It also requires my forked "node-htmlparser":http://github.com/davglass/node-htm
 Getting it up and running:
 
 <pre class="console">
-    mkdir ~/.node_libraries
-    cd ~/.node_libraries
-    wget http://github.com/tmpvar/jsdom/raw/master/lib/level1/core.js -O jsdom.js
-    wget http://github.com/tmpvar/jsdom/raw/master/lib/browser/index.js -O browser.js
-    wget http://github.com/davglass/node-htmlparser/raw/master/node-htmlparser.js
+mkdir ~/.node_libraries
+cd ~/.node_libraries
+wget http://github.com/tmpvar/jsdom/raw/master/lib/level1/core.js -O jsdom.js
+wget http://github.com/tmpvar/jsdom/raw/master/lib/browser/index.js -O browser.js
+wget http://github.com/davglass/node-htmlparser/raw/master/node-htmlparser.js
 </pre>
 
 Now that the libraries are in the right places you can now use the dom related examples.
@@ -76,7 +74,7 @@ Making older DOM code run:
 <pre class="console">
 YUI().use('event', 'io', function(Y) {
     //Do your stuff
-    
+
     //Inside the request handler callback:
     //Now each request get's a new DOM and not a shared one.
     Y.use('nodejs-dom', function(Y) {
