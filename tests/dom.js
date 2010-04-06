@@ -30,8 +30,9 @@ YUI({
         'event': true
     },
     debug: true
-}).use('event', 'node-base', 'tabview', 'test', 'selector-css3', function(Y) {
-
+}).use('nodejs-dom', 'event', 'node-base', 'tabview', 'test', 'selector-css3', function(Y) {
+    var document = Y.Browser.document;
+    var window = Y.Browser.window;
 
 /* {{{ DOM Test Suite */
 var runTests = function() {

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 var sys = require('sys');
 
-var YUI = require("./lib/node-yui3").YUI;
+var YUI = require("../lib/node-yui3").YUI;
 
 // TODO: This should pass, but currently doesn't.
 // This will work for YUI core, but any submodules are in different files
@@ -28,7 +28,8 @@ YUI({
         'event': true
     },
     debug: true
-}).use('event', 'node-base', 'tabview', function(Y) {
+}).use('nodejs-dom', 'event', 'node-base', 'slider', function(Y) {
+    var document = Y.Browser.document;
 
     Y.log('JSDom testing..');
     //sys.puts('Inside1: ' + sys.inspect(process.memoryUsage()));
@@ -37,26 +38,12 @@ YUI({
     div.id = 'demo';
     document.body.appendChild(div);
     
-    Y.log('Creating the TabView from script..');
-    var tabview = new Y.TabView({
-        children: [{
-            label: 'foo',
-            content: '<p>foo content</p>'
-        }, {
-            label: 'bar',
-            content: '<p>bar content</p>'
-        }, {
-            label: 'baz',
-            content: '<p>baz content</p>'
-        }]
-    });
-
+    Y.log('Creating the Slider from script..');
+    // Default everything
+    var slider = new Y.Slider();
     Y.log('Rendering..');
-    tabview.render('#demo');
-    //tabview.render(div);
-    //tabview.render(Y.Node.getDOMNode(Y.one('#demo')));
-    //Y.log(Y.Node.getDOMNode(Y.one('#demo')));
-    //Y.log(div);
+    slider.render("#demo");
+
     Y.log('Done..');
     Y.log(div.outerHTML, 'HTML');
 

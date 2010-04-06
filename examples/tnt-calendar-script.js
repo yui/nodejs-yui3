@@ -1,7 +1,8 @@
 #!/usr/bin/env node
-var sys = require('sys');
+var sys = require('sys'),
+    fs = require('fs');
 
-var YUI = require("./lib/node-yui3").YUI;
+var YUI = require("../lib/node-yui3").YUI;
 
 // TODO: This should pass, but currently doesn't.
 // This will work for YUI core, but any submodules are in different files
@@ -18,7 +19,7 @@ YUI({
     loaderPath: 'loader/loader-debug.js',
     base: './yui3/build/',
     filter: 'debug',
-    logExclude: {
+    _logExclude: {
         'attribute': true,
         'base': true,
         'get': true,
@@ -28,22 +29,26 @@ YUI({
         'event': true
     },
     debug: true
-}).use('event', 'node-base', 'slider', function(Y) {
-
-    Y.log('JSDom testing..');
-    //sys.puts('Inside1: ' + sys.inspect(process.memoryUsage()));
-
-    var div = document.createElement('div');
-    div.id = 'demo';
-    document.body.appendChild(div);
+}).use('nodejs-dom', function(Y) {
+    document = Y.Browser.document;
+    navigator = Y.Browser.navigator;
+    window = Y.Browser.window;
     
-    Y.log('Creating the Slider from script..');
-    // Default everything
-    var slider = new Y.Slider();
-    Y.log('Rendering..');
-    slider.render("#demo");
+    Y.use('yui2-calendar', 'yui2-logger', function() {
+        var YAHOO = Y.YUI2;
 
-    Y.log('Done..');
-    Y.log(div.outerHTML, 'HTML');
+        Y.log('JSDom testing..');
+
+        var el = document.createElement('div');
+        el.id = 'cal1Container';
+        document.body.appendChild(el);
+        
+        var cal1 = new YAHOO.widget.Calendar("cal1Container");
+        cal1.renderEvent.subscribe(function() {
+            Y.log('Done..');
+            Y.log(document.body.outerHTML, 'HTML');
+        });
+        cal1.render();
+    });
 
 });

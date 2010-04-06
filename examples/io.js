@@ -2,7 +2,7 @@
 
 var sys = require('sys');
 
-var YUI = require("./lib/node-yui3").YUI;
+var YUI = require("../lib/node-yui3").YUI;
 
 // TODO: This should pass, but currently doesn't.
 // This will work for YUI core, but any submodules are in different files
@@ -36,7 +36,7 @@ YUI({
             },
             success: function(id, o) {
                 //Y.log(o.responseText);
-                Y.log(Y.JSON.parse(o.responseText).userinfo);
+                Y.log(sys.inspect(Y.JSON.parse(o.responseText).userinfo));
             }
         }
     });
@@ -57,7 +57,7 @@ YUI({
             },
             success: function(id, o) {
                 //Y.log(o.responseText);
-                Y.log(Y.JSON.parse(o.responseText));
+                Y.log(sys.inspect(Y.JSON.parse(o.responseText)));
             }
         }
     });

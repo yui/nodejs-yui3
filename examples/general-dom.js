@@ -2,7 +2,7 @@
 
 var sys = require('sys');
 
-var YUI = require("./lib/node-yui3").YUI;
+var YUI = require("../lib/node-yui3").YUI;
 
 // TODO: This should pass, but currently doesn't.
 // This will work for YUI core, but any submodules are in different files
@@ -19,7 +19,7 @@ YUI({
     loaderPath: 'loader/loader-debug.js',
     base: './yui3/build/',
     filter: 'debug',
-    logExclude: {
+    _logExclude: {
         'attribute': true,
         'base': true,
         'get': true,
@@ -29,11 +29,11 @@ YUI({
         'event': true
     },
     debug: true
-}).use('event', 'node-base', 'tabview', function(Y) {
+}).use('nodejs-dom', 'event', 'node', function(Y) {
 
     Y.log('JSDom testing..');
     //sys.puts('Inside1: ' + sys.inspect(process.memoryUsage()));
-
+    var document = Y.Browser.document;
 
     var i = Y.Node.create('<i>Test This</i>');
     i.addClass('foo');
@@ -41,7 +41,7 @@ YUI({
 
     var div = document.createElement('div');
     div.id = 'foo';
-    div.innerHTML = '<em id="foo:bar">Test</em> this <strong id="bax">awesome <u>shit..</u></strong>';
+    div.innerHTML = '<em id="foo">Test</em> this <strong id="bax">awesome <u id="foo:bar">shit..</u></strong>';
     document.body.appendChild(div);
     
     var foo = Y.one('#foo');
