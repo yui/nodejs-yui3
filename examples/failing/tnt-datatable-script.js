@@ -2,7 +2,7 @@
 var sys = require('sys'),
     fs = require('fs');
 
-var YUI = require("./lib/node-yui3").YUI;
+var YUI = require("../../lib/node-yui3").YUI;
 
 // TODO: This should pass, but currently doesn't.
 // This will work for YUI core, but any submodules are in different files
