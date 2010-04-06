@@ -86,7 +86,7 @@ YUI().use('event', 'io', function(Y) {
 });
 </pre>
 
-
+I have an example showing this: @examples/y-browser.js@
 
 
 h2. Examples
@@ -96,6 +96,7 @@ h2. Examples
     ./general-dom.js
     ./io.js
     ./library.js
+    ./y-brower.js
 </pre>
 
 h2. Tests
