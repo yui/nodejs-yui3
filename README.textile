@@ -41,6 +41,54 @@ Getting it up and running:
 
 Now that the libraries are in the right places you can now use the dom related examples.
 
+
+h2. Using the Y.Browser object
+
+To comply with the "no-globals" CommonJS spec, there is no global document or window in this mode.
+Just including the nodejs-dom module will create a fake dom for this instance.
+You can create a document like this:
+<pre class="console">
+YUI().use('nodejs-dom', function(Y) {
+    // Y.Browser
+    {
+        window, //fake window
+        document, //jsdom document
+        self, //window
+        location, //window.location, has an href == __filename
+        navigator //Fake navigator, appVersion => Node version, appName => Node.js, userAgent => Custom for Node ;)
+    }
+});
+</pre>
+
+Making older DOM code run:
+<pre class="console">
+YUI().use('nodejs-dom', function(Y) {
+    var document = Y.Browser.document;
+    document.createElement('div');
+});
+</pre>
+
+If you are using YUI to serve pages, you should use a Nested Use to create the document when the request comes in.
+
+Something like this:
+
+Making older DOM code run:
+<pre class="console">
+YUI().use('event', 'io', function(Y) {
+    //Do your stuff
+    
+    //Inside the request handler callback:
+    //Now each request get's a new DOM and not a shared one.
+    Y.use('nodejs-dom', function(Y) {
+        var document = Y.Browser.document;
+        document.createElement('div');
+    });
+});
+</pre>
+
+
+
+
 h2. Examples
 
 <pre class="console">
