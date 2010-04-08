@@ -19,15 +19,17 @@ h2. Node.js
 
 These tests and examples are all known to be working with latest stable Node.js: v0.1.33
 
-All of the examples and tests assume you nave @node@ in your path and they are all executable.
+All of the examples and tests assume you have @node@ in your path and they are all executable.
 
 
 h2. JSDom Support
 
-Currently YUI 3 on Node.js supports "JSDom":http://github.com/tmpvar/jsom
+Currently YUI 3 on Node.js supports "JSDom":http://github.com/tmpvar/jsdom
 It also requires my forked "node-htmlparser":http://github.com/davglass/node-htmlparser
 
 Getting it up and running:
+
+Node will automatically look in this directory for include files @~/.node_libraries@
 
 <pre class="console">
 mkdir ~/.node_libraries
@@ -45,44 +47,15 @@ h2. Using the Y.Browser object
 To comply with the "no-globals" CommonJS spec, there is no global document or window in this mode.
 Just including the nodejs-dom module will create a fake dom for this instance.
 You can create a document like this:
-<pre class="console">
-YUI().use('nodejs-dom', function(Y) {
-    // Y.Browser
-    {
-        window, //fake window
-        document, //jsdom document
-        self, //window
-        location, //window.location, has an href == __filename
-        navigator //Fake navigator, appVersion => Node version, appName => Node.js, userAgent => Custom for Node ;)
-    }
-});
-</pre>
+"View this Gist":http://gist.github.com/359776
 
-Making older DOM code run:
-<pre class="console">
-YUI().use('nodejs-dom', function(Y) {
-    var document = Y.Browser.document;
-    document.createElement('div');
-});
-</pre>
+You can make older DOM code run by setting up a couple of local variables, "like this":http://gist.github.com/359778
+
 
 If you are using YUI to serve pages, you should use a Nested Use to create the document when the request comes in.
 
-Something like this:
+"Something like this":http://gist.github.com/359781
 
-Making older DOM code run:
-<pre class="console">
-YUI().use('event', 'io', function(Y) {
-    //Do your stuff
-
-    //Inside the request handler callback:
-    //Now each request get's a new DOM and not a shared one.
-    Y.use('nodejs-dom', function(Y) {
-        var document = Y.Browser.document;
-        document.createElement('div');
-    });
-});
-</pre>
 
 I have an example showing this: @examples/y-browser.js@
 
