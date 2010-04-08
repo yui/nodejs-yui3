@@ -1,110 +1,81 @@
 h1. YUI Bootstrapper for Node.js
 
 This node.js module attempts to setup and bootstrap a working YUI 3 instance.
-It does not support any DOM manipulation, but it gives you our class management
-and language extras.
 
 This module includes support for remote script loading via Y.Get.script() and remote data fetching via Y.io.
 
+See "JSDom Support" below for DOM manipulation.
+
 h2. Setup this repo
 
-<pre class="console">
-git clone git://github.com/davglass/nodejs-yui3.git
+Clone this project, then do this:
+<pre class="console">cd nodejs-yui3/lib
+git clone git://github.com/yui/yui3.git</pre>
 
-git clone git://github.com/yui/yui3.git
-
-cd nodejs-yui3/lib
-
-ln -s ../../yui3 ./
-</pre>
+You should go into that repo every now and then and do a git pull to keep it up to date with the latest YUI source.
 
 
-That should make everything work.
+h2. Node.js
 
-Now you can run this from the nodejs-yui3 root:
-<pre class="console">
-    node ./test.js
-</pre>
+These tests and examples are all known to be working with latest stable Node.js: v0.1.33
 
-h2. Including the files
+All of the examples and tests assume you have @node@ in your path and they are all executable.
 
-<pre class="console">
-    // get the exported YUI object
-    var YUI = require('./lib/node-yui3')).YUI;
-</pre>
 
-h2. Using YUI
+h2. JSDom Support
+
+Currently YUI 3 on Node.js supports "JSDom":http://github.com/tmpvar/jsdom
+It also requires my forked "node-htmlparser":http://github.com/davglass/node-htmlparser
+
+Getting it up and running:
+
+Node will automatically look in this directory for include files @~/.node_libraries@
 
 <pre class="console">
-// load YUI
-var YUI = require("./lib/node-yui3").YUI;
-
-//sys.puts('After: ' + sys.inspect(process.memoryUsage()));
-
-//Now use non-DOM related YUI utilities
-YUI({
-    filter: 'debug',
-    debug: true
-}).use('gallery-yql', 'json', 'base', 'io-nodejs', function(Y) {
-
-    //sys.puts('Inside: ' + sys.inspect(process.memoryUsage()));
-    //Logger outputs with sys.puts
-    Y.log('This is a test');
-    //Lang is available
-    Y.log('Test: ' + Y.Lang.isBoolean(true), 'debug', 'myapp');
-
-    //Creating a simple class
-    var One = function() {
-        One.superclass.constructor.apply(this, arguments);
-    };
-    //Extending it with Y.Base so we have Custom Events and a lifecycle
-    Y.extend(One, Y.Base, {
-        test: function() {
-            this.publish('foo', {
-                emitFacade: true
-            });
-            this.fire('foo');
-        }
-    }, {
-        NAME: 'one'
-    });
-
-    //Create a new instance of our new class
-    var o = new One();
-    o.on('foo', function(o) {
-        Y.log('Foo Fired', 'debug', 'myapp');
-        //Y.log(o, 'debug');
-    });
-    o.test(); //Should fire the one:foo Event.
-    
-    //Make a YQL query
-    var q1 = new Y.yql('select * from github.user.info where (id = "davglass")');
-    q1.on('query', function(r) {
-        //Do something here.
-        sys.puts(sys.inspect(r));
-    });
-
-    var url = 'http:/'+'/yuilibrary.com/gallery/api/user/davglass';
-    //url = 'http:/'+'/query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20location%3D90210&format=json';
-    
-    Y.io(url, {
-        xdr: {
-            use: 'nodejs'
-        },
-        on: {
-            start: function() {
-                Y.log('Start IO', 'info', 'TEST');
-            },
-            success: function(id, o) {
-                //Y.log(o.responseText);
-                Y.log(Y.JSON.parse(o.responseText));
-            }
-        }
-    });
-
-
-});
+mkdir ~/.node_libraries
+cd ~/.node_libraries
+wget http://github.com/tmpvar/jsdom/raw/master/lib/level1/core.js -O jsdom.js
+wget http://github.com/tmpvar/jsdom/raw/master/lib/browser/index.js -O browser.js
+wget http://github.com/davglass/node-htmlparser/raw/master/node-htmlparser.js
 </pre>
 
+Now that the libraries are in the right places you can now use the dom related examples.
 
-Now you can run @node ./test.js@
+h2. Using the Y.Browser object
+
+To comply with the "no-globals" CommonJS spec, there is no global document or window in this mode.
+Just including the nodejs-dom module will create a fake dom for this instance.
+You can create a document like this:
+"View this Gist":http://gist.github.com/359776
+
+You can make older DOM code run by setting up a couple of local variables, "like this":http://gist.github.com/359778
+
+
+If you are using YUI to serve pages, you should use a Nested Use to create the document when the request comes in.
+
+"Something like this":http://gist.github.com/359781
+
+
+I have an example showing this: @examples/y-browser.js@
+
+
+h2. Examples
+
+<pre class="console">
+    cd examples/
+    ./general-dom.js
+    ./io.js
+    ./library.js
+    ./y-brower.js
+</pre>
+
+h2. Tests
+
+When using JSDom, All relevent YUI 3 Dom & Selector tests pass. The ones that are skipped revolve around styles and postioning. Since there is no window or CSS cascade, these seem unimportant at the moment.
+
+<pre class="console">
+    cd ./tests/
+    ./dom.js
+    ./selector.js
+</pre>
+
