@@ -50,4 +50,7 @@ YUI({
         sys.puts(sys.inspect(r));
     });
 
+    var json = '{ "test": "one" }';
+    sys.puts(sys.inspect(Y.JSON.parse(json)));
+
 });
