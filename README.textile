@@ -34,8 +34,8 @@ Node will automatically look in this directory for include files @~/.node_librar
 <pre class="console">
 mkdir ~/.node_libraries
 cd ~/.node_libraries
-wget http://github.com/tmpvar/jsdom/raw/master/lib/level1/core.js -O jsdom.js
-wget http://github.com/tmpvar/jsdom/raw/master/lib/browser/index.js -O browser.js
+wget http://github.com/davglass/jsdom/raw/master/lib/level1/core.js -O jsdom.js
+wget http://github.com/davglass/jsdom/raw/master/lib/browser/index.js -O browser.js
 wget http://github.com/davglass/node-htmlparser/raw/master/node-htmlparser.js
 </pre>
 
