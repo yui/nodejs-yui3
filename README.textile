@@ -6,40 +6,24 @@ This module includes support for remote script loading via Y.Get.script() and re
 
 See "JSDom Support" below for DOM manipulation.
 
-h2. Setup this repo
-
-Clone this project, then do this:
-<pre class="console">cd nodejs-yui3/lib
-git clone git://github.com/yui/yui3.git</pre>
-
-You should go into that repo every now and then and do a git pull to keep it up to date with the latest YUI source.
-
-
 h2. Node.js
-
-These tests and examples are all known to be working with latest stable Node.js: v0.1.33
 
 All of the examples and tests assume you have @node@ in your path and they are all executable.
 
 
-h2. JSDom Support
-
-Currently YUI 3 on Node.js supports "JSDom":http://github.com/tmpvar/jsdom
-It also requires my forked "node-htmlparser":http://github.com/davglass/node-htmlparser
-
-Getting it up and running:
-
-Node will automatically look in this directory for include files @~/.node_libraries@
+h2. Installing - via NPM
 
 <pre class="console">
-mkdir ~/.node_libraries
-cd ~/.node_libraries
-wget http://github.com/davglass/jsdom/raw/master/lib/level1/core.js -O jsdom.js
-wget http://github.com/davglass/jsdom/raw/master/lib/browser/index.js -O browser.js
-wget http://github.com/davglass/node-htmlparser/raw/master/node-htmlparser.js
+npm install yui3
 </pre>
 
-Now that the libraries are in the right places you can now use the dom related examples.
+h2. Installing - as a developer
+
+<pre class="console">
+git clone git://github.com/davglass/nodejs-yui3.git
+make dev
+make link
+</pre>
 
 h2. Using the Y.Browser object
 
