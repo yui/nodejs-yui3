@@ -10,7 +10,7 @@ require("assert").equal( global.YUI, undefined, "global yui created");
 YUI({
     filter: 'debug',
     debug: true
-}).use('json', 'base', 'gallery-yql', function(Y) {
+}).use('json', 'base', 'yql', function(Y) {
 
     //sys.puts('Inside: ' + sys.inspect(process.memoryUsage()));
     //Logger outputs with sys.puts
@@ -44,10 +44,9 @@ YUI({
 
     //sys.puts(sys.inspect(Y));
     
-    var q1 = new Y.yql('select * from github.user.info where (id = "davglass")');
-    q1.on('query', function(r) {
+    Y.YQL('select * from github.user.info where (id = "davglass")', function(r) {
         //Do something here.
-        sys.puts(sys.inspect(r));
+        sys.puts(sys.inspect(r.query));
     });
 
     var json = '{ "test": "one" }';
