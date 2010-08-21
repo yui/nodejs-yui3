@@ -11,7 +11,7 @@ YUI({
     logExclude: {
         'attribute': true,
         'base': true,
-        'get': true,
+        //'get': true,
         'loader': true,
         'yui': true,
         'widget': true,

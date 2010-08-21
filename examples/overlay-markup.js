@@ -7,15 +7,6 @@ require("assert").equal( global.YUI, undefined, "global yui created");
 
 YUI({
     filter: 'debug',
-    logExclude: {
-        'attribute': true,
-        'base': true,
-        'get': true,
-        'loader': true,
-        'yui': true,
-        'widget': true,
-        'event': true
-    },
     debug: true
 }).use('nodejs-dom', 'event', 'node-base', 'overlay', function(Y) {
     var document = Y.Browser.document;
