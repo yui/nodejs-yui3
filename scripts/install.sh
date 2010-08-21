@@ -19,7 +19,7 @@ cp -R $dir/yui3/build/* ./lib/yui3/
 
 echo "Build files have been staged.. Publishing"
 
-npm publish .
+npm install .
 
 wait
 
@@ -32,4 +32,5 @@ wait
 rm -rRf $dir
 wait
 echo "All done.."
+
 

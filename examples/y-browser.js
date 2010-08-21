@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var sys = require('sys'),
-    YUI = require("../lib/node-yui3").YUI;
+    YUI = require("yui3").YUI;
 
 require("assert").equal( global.YUI, undefined, "global yui created");
 

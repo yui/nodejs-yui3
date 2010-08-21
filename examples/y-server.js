@@ -2,7 +2,7 @@
 
 var sys = require('sys'),
     http = require('http'),
-    YUI = require("../lib/node-yui3").YUI;
+    YUI = require("yui3").YUI;
 
 require("assert").equal( global.YUI, undefined, "global yui created");
 

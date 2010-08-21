@@ -11,7 +11,7 @@ publish:
 
 
 install: bootstrap
-	npm install .
+	./scripts/install.sh
 
 link: bootstrap
 	npm link .
