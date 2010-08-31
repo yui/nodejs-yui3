@@ -1,9 +1,9 @@
 {
     "name": "yui3",
-    "version": "0.5.1",
+    "version": "0.5.2",
     "description": "YUI 3 Library on NodeJS",
     "author": "Dav Glass <davglass@gmail.com>",
-    "bugs": { "mail" : "me@reidburke.com" },
+    "bugs": { "mail" : "davglass@gmail.com" },
     "os": ["darwin", "linux"],
     "contributors": [
         "Isaac Z. Schlueter <i@izs.me>",
