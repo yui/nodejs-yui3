@@ -10,6 +10,10 @@ h2. Node.js
 
 All of the examples and tests assume you have @node@ in your path and they are all executable.
 
+h2. Dependancies
+
+"JSDom":http://github.com/tmpvar/jsdom
+"HTML Parser":http://github.com/tautologistics/node-htmlparser
 
 h2. Installing - via NPM
 
