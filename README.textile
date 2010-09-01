@@ -1,6 +1,6 @@
 h1. YUI Bootstrapper for Node.js
 
-The NodeJS-YUI3 project uses several 3rd party open source libraries and tools.
+The YUI3NodeJS project uses several 3rd party open source libraries and tools.
 
 This file summarizes the tools used, their purpose, and the licenses under which they're released. 
 
