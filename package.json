@@ -1,12 +1,12 @@
 {
     "name": "yui3",
-    "version": "0.5.2",
+    "version": "0.5.3",
     "description": "YUI 3 Library on NodeJS",
     "author": "Dav Glass <davglass@gmail.com>",
-    "bugs": { "mail" : "davglass@gmail.com" },
+    "bugs": { "web" : "http://github.com/davglass/nodejs-yui3/issues" },
     "os": ["darwin", "linux"],
     "contributors": [
-        "Isaac Z. Schlueter <i@izs.me>",
+        "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)",
         "Robert Tsai <rob+github@tsaiberspace.net>"
     ],
     "engines": {
@@ -26,10 +26,8 @@
             "url" : "http://developer.yahoo.com/yui/license.html"
         }
     ],
-    "repositories": [
-        {
-            "type":"git",
-            "url":"http://github.com/davglass/nodejs-yui3.git"
-        }
-    ]
+    "repository": {
+        "type":"git",
+        "url":"http://github.com/davglass/nodejs-yui3.git"
+    }
 }
