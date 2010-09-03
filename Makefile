@@ -6,12 +6,11 @@ bootstrap:
 dev:
 	./scripts/dev.sh
 
-publish:
-	./scripts/publish.sh
-
+publish: bootstrap
+	npm publish .
 
 install: bootstrap
-	./scripts/install.sh
+	npm install .
 
 link: bootstrap
 	npm link .

@@ -33,33 +33,33 @@ YUI({
     var foo = Y.one('#foo');
     foo.addClass('bar');
 
-    Y.log(document.getElementById('foo').outerHTML, 'GEBI');
-    Y.log(document.getElementById('bax').outerHTML, 'GEBI');
+    Y.log(document.getElementById('foo').outerHTML, 'info', 'GEBI');
+    Y.log(document.getElementById('bax').outerHTML, 'info', 'GEBI');
 
     //sys.puts('Inside2: ' + sys.inspect(process.memoryUsage()));
-    Y.log(Y.Node.getDOMNode(Y.one('strong')));
-    Y.log(Y.all('em, #bax').toString());
-    Y.log(Y.Node.getDOMNode(Y.one('strong')));
+    Y.log(Y.Node.getDOMNode(Y.one('strong')), 'info');
+    Y.log(Y.all('em, #bax').toString(), 'info');
+    Y.log(Y.Node.getDOMNode(Y.one('strong')), 'info');
     
-    Y.log(Y.all('em, u').toString());
-    Y.log(Y.all('#foo, em, u, #bax'));
+    Y.log(Y.all('em, u').toString(), 'info');
+    Y.log(Y.all('#foo, em, u, #bax'), 'info');
     //sys.puts('Inside3: ' + sys.inspect(process.memoryUsage()));
 
-    Y.log(i.toString(), 'node-instance');
-    Y.log(Y.Node.getDOMNode(i).outerHTML, 'HTML');
-    Y.log(foo.toString(), 'node-instance');
-    Y.log(foo.get('className'), 'classname');
-    Y.log(Y.Node.getDOMNode(foo).outerHTML, 'HTML');
+    Y.log(i.toString(), 'info', 'node-instance');
+    Y.log(Y.Node.getDOMNode(i).outerHTML, 'info', 'HTML');
+    Y.log(foo.toString(), 'info', 'node-instance');
+    Y.log(foo.get('className'), 'info', 'classname');
+    Y.log(Y.Node.getDOMNode(foo).outerHTML, 'info', 'HTML');
 
-    Y.log(Y.one('body'), 'BODY');
-    Y.log(Y.all('body, div', null, true), 'BODY');
+    Y.log(Y.one('body'), 'info', 'BODY');
+    Y.log(Y.all('body, div', null, true), 'info', 'BODY');
 
-    Y.log(document.body.outerHTML, 'HTML');
-    Y.log(document.getElementById('foo\:bar'), 'HTML');
-    Y.log(document.getElementById('foo:bar'), 'HTML');
+    Y.log(document.body.outerHTML, 'info', 'HTML');
+    Y.log(document.getElementById('foo\:bar'), 'info', 'HTML');
+    Y.log(document.getElementById('foo:bar'), 'info', 'HTML');
 
 
-    Y.log(document.parentNode, 'document.parentNode');
+    Y.log(document.parentNode, 'info', 'document.parentNode');
 
     //Y.log(document.getElementById('bax').outerHTML, 'HTML');
     

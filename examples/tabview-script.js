@@ -10,8 +10,8 @@ YUI({
     logExclude: {
         'attribute': true,
         'base': true,
-        'get': true,
-        'loader': true,
+        //'get': true,
+        //'loader': true,
         'yui': true,
         'widget': true,
         'event': true
@@ -48,6 +48,6 @@ YUI({
     //Y.log(Y.Node.getDOMNode(Y.one('#demo')));
     //Y.log(div);
     Y.log('Done..');
-    Y.log(div.outerHTML, 'HTML');
-
+    //Y.log(div.outerHTML, 'HTML');
+    Y.log(Y.config.doc.outerHTML);
 });

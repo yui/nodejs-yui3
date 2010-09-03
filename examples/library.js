@@ -46,10 +46,10 @@ YUI({
     
     Y.YQL('select * from github.user.info where (id = "davglass")', function(r) {
         //Do something here.
-        sys.puts(sys.inspect(r.query));
+        Y.log(r.query, 'debug', 'yql');
     });
 
     var json = '{ "test": "one" }';
-    sys.puts(sys.inspect(Y.JSON.parse(json)));
+    Y.log(Y.JSON.parse(json), 'debug', 'json');
 
 });

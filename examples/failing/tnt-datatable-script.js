@@ -2,7 +2,7 @@
 var sys = require('sys'),
     fs = require('fs');
 
-var YUI = require("../../lib/node-yui3").YUI;
+var YUI = require("yui3").YUI;
 
 // TODO: This should pass, but currently doesn't.
 // This will work for YUI core, but any submodules are in different files
@@ -15,9 +15,6 @@ var YUI = require("../../lib/node-yui3").YUI;
 
 //Now use non-DOM related YUI utilities
 YUI({
-    //Only set these if you want to load locally
-    loaderPath: 'loader/loader-debug.js',
-    base: './yui3/build/',
     filter: 'debug',
     _logExclude: {
         'attribute': true,

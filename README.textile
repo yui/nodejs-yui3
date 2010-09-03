@@ -16,8 +16,27 @@ All of the examples and tests assume you have @node@ in your path and they are a
 
 h2. Dependancies
 
+All dependencies are installed when you install the yui3 package via @npm@
+
+For server side dom manipulation, you need the following packages installed:
+
 "JSDom":http://github.com/tmpvar/jsdom : "LICENSE":http://github.com/tmpvar/jsdom/blob/master/LICENSE.txt
+
+<pre class="console">npm install jsdom</pre>
+
 "HTML Parser":http://github.com/tautologistics/node-htmlparser : "LICENSE":http://github.com/tautologistics/node-htmlparser/blob/master/LICENSE
+
+<pre class="console">npm install htmlparser</pre>
+
+h2. Optional Dependancies
+
+"Express":http://expressjs.com/ : LICENSE (MIT)
+    
+<pre class="console">npm install express</pre>
+
+"Connect"http://github.com/senchalabs/connect : LICENSE (MIT)
+    
+ <pre class="console">npm install connect</pre>
 
 h2. Installing - via NPM
 
@@ -27,8 +46,11 @@ npm install yui3
 
 h2. Installing - as a developer
 
+You must have git and npm installed before you can develop.
+
 <pre class="console">
 git clone git://github.com/davglass/nodejs-yui3.git
+cd nodejs-yui3/
 make dev
 make install
 </pre>
