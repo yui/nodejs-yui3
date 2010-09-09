@@ -15,7 +15,7 @@ YUI({
         'event': true
     },
     debug: true
-}).use('nodejs-dom', 'event', 'node', function(Y) {
+}).use('node', function(Y) {
 
     Y.log('JSDom testing..');
     //sys.puts('Inside1: ' + sys.inspect(process.memoryUsage()));

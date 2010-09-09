@@ -16,8 +16,10 @@ YUI({
 
     var div = document.createElement('div');
     div.id = 'demo';
-    div.innerHTML = '<ul><li><a href="#foo">foo</a></li><li><a href="#bar">bar</a></li><li><a href="#baz">baz</a></li></ul><div><div id="foo">foo content</div><div id="bar">bar content</div><div id="baz">baz content</div></div>';
+    div.innerHTML = '<ul><li><a href="#foo">foo</a></li><li><a href="#bar">bar</a></li><li><a href="#baz">baz</a></li></ul><div><div id="foo"><p>foo content</p></div><div id="bar"><p>bar content</p></div><div id="baz"><p>baz content</p></div></div>';
     document.body.appendChild(div);
+
+    console.log(div.outerHTML);
     
 
     Y.log('Creating the TabView from source..');

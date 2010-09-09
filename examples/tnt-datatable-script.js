@@ -4,23 +4,14 @@ var sys = require('sys'),
 
 var YUI = require("yui3").YUI;
 
-// TODO: This should pass, but currently doesn't.
-// This will work for YUI core, but any submodules are in different files
-// This will work better once the 3.1.0 version of YUI is available
-// And you can combo handle all the submodules into one request.
-
-
-//require("assert").equal( global.YUI, undefined, "global yui created");
-
-
-//Now use non-DOM related YUI utilities
 YUI({
+    //yui2: '2.8.0',
     filter: 'debug',
     _logExclude: {
         'attribute': true,
         'base': true,
-        'get': true,
-        'loader': true,
+        //'get': true,
+        //'loader': true,
         'yui': true,
         'widget': true,
         'event': true

@@ -21,7 +21,7 @@ YUI({
         'event': true
     },
     debug: true
-}).use('nodejs-dom', 'event', 'node', 'dd', 'test', 'selector-css3', function(Y) {
+}).use('nodejs-dom', 'event', 'node', 'dd', 'dd-plugin', 'dd-drop-plugin', 'test', 'selector-css3', function(Y) {
 
     var document = Y.Browser.document;
     var window = Y.Browser.window;

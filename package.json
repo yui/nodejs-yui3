@@ -18,7 +18,7 @@
     "main": "./lib/node-yui3",
     "bin" : { "yui3docs" : "./cli.js" },
     "dependencies": {
-        "jsdom": ">=0.1.6", 
+        "jsdom": ">=0.1.9", 
         "htmlparser": ">=1.6.2",
         "express": ">=1.0.0rc1",
         "connect": ">=0.2.4"
