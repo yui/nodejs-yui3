@@ -1,5 +1,8 @@
 #!/usr/bin/env node
-process.chdir(__dirname + '/lib/yui3/api/');
+
+var yui3 = require('yui3-core');
+
+process.chdir(yui3.path() + '/api/');
 
 try {
     var express = require('express');

@@ -1,6 +1,6 @@
 {
     "name": "yui3",
-    "version": "0.5.4",
+    "version": "0.5.5",
     "description": "YUI 3 Library on NodeJS",
     "author": "Dav Glass <davglass@gmail.com>",
     "bugs": { "web" : "http://github.com/davglass/nodejs-yui3/issues" },
