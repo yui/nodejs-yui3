@@ -36,7 +36,7 @@ YUI({
         var cal1 = new YAHOO.widget.Calendar("cal1Container");
         cal1.renderEvent.subscribe(function() {
             Y.log('Done..');
-            Y.log(document.body.outerHTML, 'HTML');
+            Y.log(document.outerHTML, 'HTML');
         });
         cal1.render();
     });
