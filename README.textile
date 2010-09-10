@@ -51,7 +51,7 @@ You must have git and npm installed before you can develop.
 <pre class="console">
 git clone git://github.com/davglass/nodejs-yui3.git
 cd nodejs-yui3/
-make install
+npm install .
 </pre>
 
 h2. Using YUI3
