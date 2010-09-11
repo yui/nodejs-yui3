@@ -79,7 +79,7 @@ YUI({ debug: false, filter: 'min' }).use('express', 'node', function(Y) {
                     });
                     Y.one('#content').prepend('<ul>' + html + '</ul>');
                 },
-                yui: function(Y) {
+                before: function(Y) {
                     Y.one('h1').set('innerHTML', 'BooYah!!');
                 }
             }
