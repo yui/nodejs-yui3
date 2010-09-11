@@ -57,6 +57,19 @@ YUI({ debug: false, filter: 'min' }).use('express', 'node', function(Y) {
         });
     });
 
+    YUI.partials = [
+        {
+            method: 'append',
+            node: 'body',
+            name: 'layout_append'
+        },
+        {
+            method: 'prepend',
+            node: 'body',
+            name: 'layout_prepend'
+        }
+    ];
+
     app.get('/', function(req, res){
         res.render('index.html', {
             locals: {
@@ -67,6 +80,13 @@ YUI({ debug: false, filter: 'min' }).use('express', 'node', function(Y) {
                     title3: 'Title #3',
                     title4: 'Title #4'
                 },
+                partials: [
+                    {
+                        method: 'append',
+                        node: 'head',
+                        name: 'layout_head'
+                    }
+                ],
                 after: function(Y, options, partial) {
                     Y.Get.domScript('/main.js');
                     Y.one('title').set('innerHTML', 'This is a test');
