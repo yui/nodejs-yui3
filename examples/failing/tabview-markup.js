@@ -31,6 +31,8 @@ YUI({
 
     Y.log('Rendering..');
     tabview.on('render', function() {
+        console.log(Y.one('doc').get('outerHTML'));
+        
         Y.log('Render event listener');
     });
     tabview.render();
