@@ -1,6 +1,6 @@
 {
     "name": "yui3",
-    "version": "0.5.7",
+    "version": "0.5.8",
     "description": "YUI 3 Library on NodeJS",
     "author": "Dav Glass <davglass@gmail.com>",
     "bugs": { "web" : "http://github.com/davglass/nodejs-yui3/issues" },
@@ -19,7 +19,7 @@
     "bin" : { "yui3docs" : "./cli.js" },
     "dependencies": {
         "yui3-core": ">=3.2.0",
-        "jsdom": ">=0.1.9", 
+        "jsdom": ">=0.1.10", 
         "htmlparser": ">=1.6.2",
         "express": ">=1.0.0rc1",
         "connect": ">=0.2.4"
