@@ -717,7 +717,7 @@ var runTests = function() {
 
     Y.log('JSDom testing..');
     //sys.puts('Inside1: ' + sys.inspect(process.memoryUsage()));
-    fs.readFile('./dom.html', encoding="utf-8", function(err, data) {
+    fs.readFile(__dirname + '/dom.html', encoding="utf-8", function(err, data) {
         ///Y.log(data);
         document.body.innerHTML = data;
         //Y.log(document.body);
