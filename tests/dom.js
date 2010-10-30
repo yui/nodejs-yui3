@@ -705,6 +705,40 @@ var runTests = function() {
                 rgb = "rgb(97, 11, 56)" ; //610B38
                 hex = Y.Color.toHex(rgb);
                 Assert.areSame(hex, "#610B38", " shoudl be #610B38");
+            },
+            test_forms: function() {
+                var el = document.getElementById('test-form'),
+                    n = Y.one('#test-form');
+
+                Assert.areSame(el.action, '#', 'Failed to return el.action');
+                Assert.areSame(n.get('action'), '#', 'Failed to return n.get(action)');
+                Assert.areSame(el.action, n.get('action'), 'Failed to return el.action == n.get(action)');
+
+                el.action = '/foo';
+                Assert.areSame(el.action, '/foo', 'Failed to return el.action');
+                Assert.areSame(n.get('action'), '/foo', 'Failed to return n.get(action)');
+                Assert.areSame(el.action, n.get('action'), 'Failed to return el.action == n.get(action)');
+
+                n.set('action', '/bar');
+                Assert.areSame(el.action, '/bar', 'Failed to return el.action');
+                Assert.areSame(n.get('action'), '/bar', 'Failed to return n.get(action)');
+                Assert.areSame(el.action, n.get('action'), 'Failed to return el.action == n.get(action)');
+
+                Assert.areSame(el.method, 'get', 'Failed to return el.method');
+                Assert.areSame(n.get('method'), 'get', 'Failed to return n.get(method)');
+                Assert.areSame(el.method, n.get('method'), 'Failed to return el.method == n.get(method)');
+
+                el.method = 'post';
+                Assert.areSame(el.method, 'post', 'Failed to return el.method');
+                Assert.areSame(n.get('method'), 'post', 'Failed to return n.get(method)');
+                Assert.areSame(el.method, n.get('method'), 'Failed to return el.method == n.get(method)');
+
+                n.set('method', 'delete');
+                Assert.areSame(el.method, 'delete', 'Failed to return el.method');
+                Assert.areSame(n.get('method'), 'delete', 'Failed to return n.get(method)');
+                Assert.areSame(el.method, n.get('method'), 'Failed to return el.method == n.get(method)');
+
+
             }
         })); 
         Y.Test.Runner.add(suite);
