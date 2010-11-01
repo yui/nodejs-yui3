@@ -18,9 +18,6 @@ YUI({
     var url3 = 'http:/'+'/localhost:8500/';
     
     Y.io(url, {
-        xdr: {
-            use: 'nodejs'
-        },
         on: {
             start: function() {
                 Y.log('Start IO', 'info', 'TEST');
@@ -34,9 +31,6 @@ YUI({
 
 
     Y.io(url2, {
-        xdr: {
-            use: 'nodejs'
-        },
         method: 'POST',
         headers: {
             foo: 'bar'
@@ -55,9 +49,6 @@ YUI({
     
 
     Y.io(url3, {
-        xdr: {
-            use: 'nodejs'
-        },
         on: {
             start: function() {
                 Y.log('Start IO', 'info', 'TEST');
