@@ -20,7 +20,7 @@ YUI({
         'event': true
     },
     debug: true
-}).use('nodejs-dom', 'event', 'node-base', 'tabview', 'test', 'selector-css3', function(Y) {
+}).use('dom-deprecated', 'node-base', 'test', 'selector-css3', function(Y) {
     var document = Y.Browser.document;
     var window = Y.Browser.window;
 
@@ -750,22 +750,9 @@ var runTests = function() {
 
 
     Y.log('JSDom testing..');
-    //sys.puts('Inside1: ' + sys.inspect(process.memoryUsage()));
     fs.readFile(__dirname + '/dom.html', encoding="utf-8", function(err, data) {
-        ///Y.log(data);
         document.body.innerHTML = data;
-        //Y.log(document.body);
-        
         Y.log('Document loaded, run tests..');
-        
-        var ids = document._ids,
-            count = 0;
-        for (var i in ids) {
-            //sys.puts('id: ' + i);
-            count++;
-        }
-        sys.puts('# of ids: ' + count);
-        
         runTests();
     });
 

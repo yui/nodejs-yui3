@@ -8,7 +8,7 @@ require("assert").equal( global.YUI, undefined, "global yui created");
 YUI({
     filter: 'debug',
     debug: true
-}).use('nodejs-dom', 'event', 'node-base', 'overlay', function(Y) {
+}).use('overlay', function(Y) {
     var document = Y.Browser.document;
 
     Y.log('JSDom testing..');

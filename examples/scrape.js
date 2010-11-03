@@ -31,7 +31,7 @@ YUI({
                 ul.appendChild(Y.Node.create('<li></li>')).append(a);
             });
             //Now, we can print the "outer" instances html and drop it to the screen
-            console.log(Y.get('doc').get('outerHTML'));
+            console.log(Y.one('doc').get('outerHTML'));
         });
     });
 

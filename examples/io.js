@@ -9,7 +9,7 @@ require("assert").equal( global.YUI, undefined, "global yui created");
 YUI({
     filter: 'debug',
     debug: true
-}).use('json', 'nodejs-dom', 'base', 'io-nodejs', function(Y) {
+}).use('json', 'io', function(Y) {
 
     var url = 'http:/'+'/yuilibrary.com/gallery/api/user/davglass';
     

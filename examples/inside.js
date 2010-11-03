@@ -9,7 +9,7 @@ require("assert").equal( global.YUI, undefined, "global yui created");
 YUI({
     filter: 'debug',
     debug: true
-}).use('json', 'base', 'io-nodejs', 'yql', function(Y) {
+}).use('json', 'base', 'io', 'yql', function(Y) {
 
     console.log('YQL1: ', Y.YQL);
     var Y2 = YUI({ filter: 'debug', debug: true }).use('*');

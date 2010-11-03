@@ -15,7 +15,7 @@ YUI({
         'event': true
     },
     debug: true
-}).use('nodejs-dom', 'event', 'node', 'gallery-yql', function(Y) {
+}).use('node', 'gallery-yql', function(Y) {
 
 
     new Y.yql('select * from github.user.info where (id = "davglass")', function(r) {
