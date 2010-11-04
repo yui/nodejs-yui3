@@ -629,8 +629,8 @@ var runTests = function() {
                 Y.DOM.addHTML(node, '<strong>new content</strong>', node.firstChild);
                 Assert.areEqual('STRONG', node.firstChild.nodeName, "Y.DOM.addHTML(node, '<em>new content</em>', node.firstChild)");
 
-                Y.DOM.addHTML(node, '<span>new content</span>', node.childNodes[1]);
-                Assert.areEqual('SPAN', node.childNodes[1].nodeName, "Y.DOM.addHTML(node, '<em>new content</em>', node.childNodes[1])");
+                Y.DOM.addHTML(node, '<span>new content</span>', node.childNodes.item(1));
+                Assert.areEqual('SPAN', node.childNodes.item(1).nodeName, "Y.DOM.addHTML(node, '<em>new content</em>', node.childNodes[1])");
 
                 Y.DOM.addHTML(node, 200);
                 Assert.areEqual(3, node.lastChild.nodeType, "Y.DOM.addHTML(node, 200)");
