@@ -34,7 +34,7 @@ h2. Optional Dependancies
     
 <pre class="console">npm install express</pre>
 
-"Connect"http://github.com/senchalabs/connect : LICENSE (MIT)
+"Connect":http://github.com/senchalabs/connect : LICENSE (MIT)
     
  <pre class="console">npm install connect</pre>
 
