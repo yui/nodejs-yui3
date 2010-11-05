@@ -21,7 +21,7 @@ YUI({
         'event': true
     },
     debug: true
-}).use('nodejs-dom', 'event', 'node', 'dd', 'dd-plugin', 'dd-drop-plugin', 'test', 'selector-css3', function(Y) {
+}).use('event', 'node', 'dd', 'dd-plugin', 'dd-drop-plugin', 'test', 'selector-css3', function(Y) {
 
     var document = Y.Browser.document;
     var window = Y.Browser.window;
@@ -371,7 +371,7 @@ YUI({
 
     Y.log('JSDom testing..');
     //sys.puts('Inside1: ' + sys.inspect(process.memoryUsage()));
-    fs.readFile('./dd.html', encoding="utf-8", function(err, data) {
+    fs.readFile(__dirname + '/dd.html', encoding="utf-8", function(err, data) {
         ///Y.log(data);
         document.body.innerHTML = data;
         //Y.log(document.body);
