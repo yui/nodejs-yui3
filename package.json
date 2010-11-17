@@ -7,10 +7,12 @@
     "os": ["darwin", "linux"],
     "contributors": [
         "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)",
-        "Robert Tsai <rob+github@tsaiberspace.net>"
+        "Robert Tsai <rob+github@tsaiberspace.net>",
+        "Bart Teeuwisse <bart.teeuwisse@thecodemill.biz> (http://thecodemill.biz/)",
+        "Phil Dokas <pdokas@organic.com>"
     ],
     "engines": {
-        "node" : ">=0.1.100"
+        "node" : ">=0.2.0"
     },
     "directories": {
         "lib" : "lib"
@@ -21,7 +23,7 @@
         "yui3-core": ">=2010.11.03",
         "jsdom": ">=0.1.19", 
         "htmlparser": ">=1.6.2",
-        "express": ">=1.0.0rc4",
+        "express": ">=1.0.0",
         "connect": ">=0.2.4"
     },
     "licenses":[
