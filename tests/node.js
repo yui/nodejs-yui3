@@ -756,12 +756,14 @@ var window = Y.config.win;
 
             node.setContent('<em>foo</em><span>bar</span>');
 
+            //console.log(node._node.outerHTML);
             node.insert('<strong>baz</strong>', node.one('span'));
-            Assert.areEqual(node._node.childNodes[1].tagName, 'STRONG',
-                "node.insert('<strong>bar</strong>', node.one('span')");
+            console.log(node._node.outerHTML);
+            Assert.areEqual('STRONG', node._node.childNodes[1].tagName, 
+                "node.insert('<strong>baz</strong>', node.one('span')");
 
             node.insert('<code>var lorem</code>', node.one('em')._node);
-            Assert.areEqual(node._node.childNodes[0].tagName, 'CODE',
+            Assert.areEqual('CODE', node._node.childNodes[0].tagName, 
                 "node.insert('<code>var lorem</code>', node.one('em')._node)");
 
             // insert Node instance
