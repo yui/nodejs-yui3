@@ -9,7 +9,8 @@
         "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)",
         "Robert Tsai <rob+github@tsaiberspace.net>",
         "Bart Teeuwisse <bart.teeuwisse@thecodemill.biz> (http://thecodemill.biz/)",
-        "Phil Dokas <pdokas@organic.com>"
+        "Phil Dokas <pdokas@organic.com>",
+        "Standa Opichal <opichals@gmail.com>"
     ],
     "engines": {
         "node" : ">=0.2.0"
