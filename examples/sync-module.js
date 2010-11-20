@@ -2,8 +2,6 @@
 
 var YUI = require("yui3").YUI;
 
-YUI.loadSync = true;
-
 YUI({
     filter: 'debug',
     _logExclude: {
@@ -16,7 +14,7 @@ YUI({
         'event': true
     },
     debug: true
-}).use('yql', function(Ysync) {
+}).useSync('yql', function(Ysync) {
 
     module.exports = Ysync;
     
