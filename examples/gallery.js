@@ -1,19 +1,20 @@
 #!/usr/bin/env node
 
 var sys = require('sys'),
-    YUI = require("yui3").YUI;
+    yui3 = require("yui3");
+
+//YUI = yui3.YUI;
+
+YUI = yui3.configure({
+    gallery: '2010.09.22'
+});
+
+YUI3 = yui3.configure({
+    gallery: '2010.09.22'
+});
+
 
 YUI({
-    filter: 'debug',
-    _logExclude: {
-        'attribute': true,
-        'base': true,
-        'get': true,
-        'loader': true,
-        'yui': true,
-        'widget': true,
-        'event': true
-    },
     debug: true
 }).use('node', 'gallery-yql', function(Y) {
 
