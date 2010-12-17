@@ -6,9 +6,6 @@ var sys = require('sys'),
 
 var YUI = require("yui3").YUI;
 
-require("assert").equal( global.YUI, undefined, "global yui created");
-
-
 YUI({
     filter: 'raw',
     _logExclude: {

@@ -2,7 +2,6 @@
 
 var YUI = require('yui3').YUI;
 
-
 YUI({
     debug: true,
     modules: {

@@ -5,8 +5,6 @@ var sys = require('sys'),
     fs = require('fs'),
     YUI = require("yui3").YUI;
 
-require("assert").equal( global.YUI, undefined, "global yui created");
-
 var DEBUG = true;
 
 YUI({ debug: DEBUG }).use('base', 'nodejs-dom', 'node', 'gallery-yql', 'json-stringify', function(Y) {

@@ -4,8 +4,6 @@ var sys = require('sys'),
     http = require('http'),
     YUI = require("yui3").YUI;
 
-require("assert").equal( global.YUI, undefined, "global yui created");
-
 var DEBUG = true;
 
 YUI({ debug: DEBUG }).use('base', 'nodejs-dom', 'node', function(Y) {
