@@ -446,7 +446,6 @@ var runTests = function() {
                         paraChildren.push(el);
                     }
                 });
-
                 ArrayAssert.itemsAreEqual(paraChildren, $('> p', Y.DOM.byId('demo')), '#demo > p');
                 ArrayAssert.itemsAreEqual($('#demo > p'), $('foo, > p', Y.DOM.byId('demo')), '#demo foo, #demo > p');
 
