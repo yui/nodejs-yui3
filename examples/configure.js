@@ -2,14 +2,16 @@
 
 
 var YUIConfig = {
-    core: '3.2.0',
+    //core: '3.2.0',
+    core: '3.3.0pr3',
     gallery: '2010.09.22',
     '2in3': '0.0.3'
-}
-var yui3 = require('yui3');
-var YUI = yui3.configure(YUIConfig);
+};
 
-console.log(YUI.GlobalConfig.base);
-console.log(YUI.GlobalConfig.groups.gallery.base);
-console.log(YUI.GlobalConfig.groups.yui2.base);
+var yui3 = require('yui3');
+var Y = yui3.configure(YUIConfig).useSync('node', 'gallery-torelativetime');
+
+console.log(Y.config.base);
+console.log(Y.config.groups.gallery.base);
+console.log(Y.config.groups.yui2.base);
         
