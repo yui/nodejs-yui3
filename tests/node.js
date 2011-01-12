@@ -1500,7 +1500,7 @@ var window = Y.config.win;
 
 /* }}} */
 
-    fs.readFile(__dirname + '/node.html', encoding="utf-8", function(err, data) {
+    fs.readFile(__dirname + '/html/node.html', encoding="utf-8", function(err, data) {
         document.body.innerHTML = data;
         Y.log('Document loaded, run tests..');
         Y.Test.Runner.run();

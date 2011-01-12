@@ -750,7 +750,7 @@ var runTests = function() {
 
 
     Y.log('JSDom testing..');
-    fs.readFile(__dirname + '/dom.html', encoding="utf-8", function(err, data) {
+    fs.readFile(__dirname + '/html/dom.html', encoding="utf-8", function(err, data) {
         document.body.innerHTML = data;
         Y.log('Document loaded, run tests..');
         runTests();
