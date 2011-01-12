@@ -6,6 +6,15 @@ var YUI = require("yui3").YUI;
 
 require("assert").equal( global.YUI, undefined, "global yui created");
 
+var debug = true;
+var argv = process.argv;
+if (argv[1].indexOf('expresso') > 0) {
+    debug = false;
+}
+//This is a hack to make YUITest execute tests in sync..
+setTimeout = function(fn, ms) {
+    fn();
+};
 
 YUI({
     filter: 'debug',
@@ -19,11 +28,10 @@ YUI({
         'widget': true,
         'event': true
     },
-    debug: true
-}).use('event', 'dom-deprecated', 'node-base', 'test', 'selector-css3', function(Y) {
+    debug: debug
+}).useSync('event', 'dom-deprecated', 'node-base', 'test', 'selector-css3', function(Y) {
     var document = Y.Browser.document;
     var window = Y.Browser.window;
-
 
 /* {{{ Selector Test Suite */
 var runTests = function() {
@@ -477,20 +485,25 @@ var runTests = function() {
 /* }}} */
 
 
-    Y.log('JSDom testing..');
-    //sys.puts('Inside1: ' + sys.inspect(process.memoryUsage()));
-    fs.readFile(__dirname + '/html/selector.html', encoding="utf-8", function(err, data) {
-        ///Y.log(data);
-        document.body.innerHTML = data;
-        //Y.log(document.body.outerHTML);
-        
-        Y.log('Document loaded, run tests..');
-        runTests();
+    var html = fs.readFileSync(__dirname + '/html/selector.html', encoding="utf-8");
+    document.body.innerHTML = html;    
+    Y.Test.Runner.subscribe(Y.Test.Runner.TEST_CASE_COMPLETE_EVENT, function(c) {
+        var obj = {};
+        var assert = require('assert');
+        for (var i in c.results) {
+            if (i.indexOf('test') === 0) {
+                obj[i] = (function(o) {
+                    return function() {
+                        if (o.result == 'fail') {
+                            assert.fail(o.message);
+                        }
+                    }
+                })(c.results[i]);
+            }
+        }
+        module.exports = obj;
     });
-
-    
-
-
+    runTests();
 
 
 });

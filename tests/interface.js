@@ -9,7 +9,7 @@ module.exports = {
         assert.ok(Y.Loader);
     },
     "yui3.configure({}).useSync" : function () {
-        var Y = yui3.configure({}).useSync("loader");
+        var Y = yui3.configure({ debug: false }).useSync("loader");
         assert.ok(Y.Loader);
     },
     "yui3.YUI" : function () {
@@ -18,7 +18,7 @@ module.exports = {
         assert.isUndefined(Y.Loader);
     },
     "yui3.configure({}).YUI" : function () {
-        var Y = yui3.configure({}).YUI;
+        var Y = yui3.configure({ debug: false }).YUI;
         assert.ok(Y);
         assert.isUndefined(Y.Loader);
     },
@@ -28,7 +28,7 @@ module.exports = {
         });
     },
     "yui3.configure({}).use" : function () {
-        yui3.configure({}).use("loader", function (Y) {
+        yui3.configure({ debug: false }).use("loader", function (Y) {
             assert.ok(Y.Loader);
         });
     },

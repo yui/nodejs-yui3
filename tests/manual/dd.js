@@ -371,7 +371,7 @@ YUI({
 
     Y.log('JSDom testing..');
     //sys.puts('Inside1: ' + sys.inspect(process.memoryUsage()));
-    fs.readFile(__dirname + '/html/dd.html', encoding="utf-8", function(err, data) {
+    fs.readFile(__dirname + '/../html/dd.html', encoding="utf-8", function(err, data) {
         ///Y.log(data);
         document.body.innerHTML = data;
         //Y.log(document.body);
