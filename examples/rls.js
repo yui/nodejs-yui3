@@ -9,8 +9,9 @@ yui3.rls({
     gv: '2010.09.22',
     '2in3v': '0.0.3'//,
     //filt: 'RAW',
-}, function(files) {
+}, function(js, css) {
     console.log('Callback..');
-    console.log(files);
+    console.log(js);
+    console.log(css);
 });
 
