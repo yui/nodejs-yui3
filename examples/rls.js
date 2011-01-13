@@ -9,9 +9,18 @@ yui3.rls({
     gv: '2010.09.22',
     '2in3v': '0.0.3'//,
     //filt: 'RAW',
-}, function(js, css) {
+}, function(js, css, data) {
     console.log('Callback..');
     console.log(js);
     console.log(css);
+    //console.log(data);
+    /*
+    for (var i in data) {
+        console.log('i: ', i, (data[i].length));
+    }
+    */
+    console.log('Total: ', [].concat(js, css).length);
+    console.log('Data: ', Object.keys(data).length);
+    
 });
 

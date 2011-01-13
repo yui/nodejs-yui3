@@ -94,12 +94,12 @@ h2. Tests
 
 When using JSDom, All relevent YUI 3 Dom & Selector tests pass. The ones that are skipped revolve around styles and postioning. Since there is no window or CSS cascade, these seem unimportant at the moment.
 
-<pre class="console">
-    cd ./tests/
-    ./dom.js
-    ./selector.js
-</pre>
+Testing is pretty simple now once you install `expresso`:
 
+<pre class="console">
+    npm install expresso
+    expresso ./tests/*.js
+</pre>
 
 h2. License
 
