@@ -18,7 +18,8 @@ npm.load(config, function() {
         var installed = {};
         for (var i in data) {
             if (i.match(/yui3-/)) {
-                installed[i] = data[i].versions;
+                var c = i.split('@');
+                installed[c[0]] = data[i].data.versions;
             }
         }
         start(installed);
@@ -29,7 +30,6 @@ var express = require('express'),
         app = express.createServer();
 
 var start = function(mods) {
-    
     var qs = require('querystring');
 
 
@@ -79,9 +79,9 @@ var start = function(mods) {
             YUIConfig['2in3'] = p.yui2;
         }
         var yui3 = require('yui3');
-        var YUI = yui3.configure(YUIConfig);
+        var YUI = yui3.configure(YUIConfig).YUI;
         
-        out += '<h1>YUI Loaded From Config</h1>'
+        out += '<h1>YUI Loaded From Config</h1>';
         out += 'Core: ' + YUI.GlobalConfig.base + '<br>';
         if (YUI.GlobalConfig.groups && YUI.GlobalConfig.groups.gallery) {
             out += 'Gallery: ' + YUI.GlobalConfig.groups.gallery.base + '<br>';

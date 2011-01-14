@@ -5,7 +5,7 @@ var assert = require("assert"),
 
 module.exports = {
     "yui3.useSync" : function () {
-        var Y = yui3.useSync("loader");
+        var Y = yui3.silent().useSync("loader");
         assert.ok(Y.Loader);
     },
     "yui3.configure({}).useSync" : function () {
@@ -18,12 +18,27 @@ module.exports = {
         assert.isUndefined(Y.Loader);
     },
     "yui3.configure({}).YUI" : function () {
-        var Y = yui3.configure({ debug: false }).YUI;
+        var Y = yui3.configure({}).YUI;
         assert.ok(Y);
+        assert.ok(Y.GlobalConfig);
+        assert.isUndefined(Y.Loader);
+    },
+    "yui3.configure({ core: '3.2.0' }).YUI" : function () {
+        var Y = yui3.configure({ core: '3.2.0' }).YUI;
+        assert.ok(Y);
+        assert.ok(Y.GlobalConfig);
+        assert.notEqual(Y.GlobalConfig.base.indexOf('3.2.0'), -1);
+        assert.isUndefined(Y.Loader);
+    },
+    "yui3.configure({ core: '3.3.0pr3' }).YUI" : function () {
+        var Y = yui3.configure({ core: '3.3.0pr3' }).YUI;
+        assert.ok(Y);
+        assert.ok(Y.GlobalConfig);
+        assert.notEqual(Y.GlobalConfig.base.indexOf('3.3.0pr3'), -1);
         assert.isUndefined(Y.Loader);
     },
     "yui3.use" : function () {
-        yui3.use("loader", function (Y) {
+        yui3.silent().use("loader", function (Y) {
             assert.ok(Y.Loader);
         });
     },
