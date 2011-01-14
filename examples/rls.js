@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+
+var start = (new Date()).getTime();
 var yui3 = require('yui3');
 yui3.rls({
     //m: 'yui,loader,dd,widget,autocomplete,gallery-yql,yui2-datatable',
@@ -10,6 +12,7 @@ yui3.rls({
     '2in3v': '0.0.3'//,
     //filt: 'RAW',
 }, function(js, css, data) {
+    var end = (new Date()).getTime() - start;
     console.log('Callback..');
     console.log(js);
     console.log(css);
@@ -21,6 +24,7 @@ yui3.rls({
     console.log('Total: ', [].concat(js, css).length);
     console.log('Data: ', Object.keys(data).length);
     console.log('Size: (bytes)', size);
+    console.log('Time: %sms', end);
     
 });
 
