@@ -51,8 +51,9 @@ module.exports = {
         yui3.rls({
             m: 'yui,loader,dd,widget,autocomplete,gallery-yql,yui2-datatable',
             v: '3.3.0',
+            parse: true,
             gv: '2010.09.22',
-            '2in3v': '0.0.3'
+            '2in3v': '2.8.0'
         }, function(js, css, data) {
             assert.equal(js.length, 33);
             assert.equal(css.length, 4);
@@ -64,8 +65,9 @@ module.exports = {
             m: 'dd,widget,autocomplete,gallery-yql,yui2-datatable',
             //env: 'node,attribute',
             v: '3.3.0',
+            parse: true,
             gv: '2010.09.22',
-            '2in3v': '0.0.3'//,
+            '2in3v': '2.8.0'//,
             //filt: 'RAW',
         }, function(js, css, data) {
             assert.equal(js.length, 31);
@@ -79,8 +81,9 @@ module.exports = {
             m: 'dd,widget,autocomplete,gallery-yql,yui2-datatable',
             env: 'node,attribute',
             v: '3.3.0',
+            parse: true,
             gv: '2010.09.22',
-            '2in3v': '0.0.3'//,
+            '2in3v': '2.8.0'//,
             //filt: 'RAW',
         }, function(js, css, data) {
             assert.equal(js.length, 26);
@@ -93,8 +96,9 @@ module.exports = {
             m: 'dd,widget,autocomplete,gallery-yql,yui2-datatable',
             env: 'node,attribute',
             v: '3.3.0',
+            parse: true,
             gv: '2010.09.22',
-            '2in3v': '0.0.3',
+            '2in3v': '2.8.0',
             filt: 'RAW'
         }, function(js, css, data) {
             assert.equal(js.length, 26);
@@ -108,8 +112,9 @@ module.exports = {
             m: 'dd,widget,autocomplete,gallery-yql,yui2-datatable',
             env: 'node,attribute',
             v: '3.3.0',
+            parse: true,
             gv: '2010.09.22',
-            '2in3v': '0.0.3',
+            '2in3v': '2.8.0',
             filt: 'MIN'
         }, function(js, css, data) {
             assert.equal(js.length, 26);
@@ -123,8 +128,9 @@ module.exports = {
             m: 'dd,widget,autocomplete,gallery-yql,yui2-datatable',
             env: 'node,attribute',
             v: '3.3.0',
+            parse: true,
             gv: '2010.09.22',
-            '2in3v': '0.0.3',
+            '2in3v': '2.8.0',
             filt: 'DEBUG'
         }, function(js, css, data) {
             assert.equal(js.length, 26);
@@ -138,8 +144,9 @@ module.exports = {
             m: 'dd,widget,autocomplete,gallery-yql,yui2-datatable',
             env: 'node,attribute',
             v: '3.3.0',
+            parse: true,
             gv: '2010.09.22',
-            '2in3v': '0.0.3'
+            '2in3v': '2.8.0'
         }, function(js, css, data) {
             assert.equal(js.length, 26);
             assert.equal(css.length, 4);
@@ -152,8 +159,9 @@ module.exports = {
             m: 'dd,widget,gallery-yql,yui2-datatable',
             env: 'node,attribute',
             v: '3.2.0',
+            parse: true,
             gv: '2010.09.22',
-            '2in3v': '0.0.3'
+            '2in3v': '2.8.0'
         }, function(js, css, data) {
             assert.equal(js.length, 15);
             assert.equal(css.length, 2);
@@ -165,9 +173,10 @@ module.exports = {
         yui3.rls({
             m: 'dd,widget,gallery-yql,yui2-datatable',
             env: 'node,attribute',
+            parse: true,
             v: '3.2.0',
             gv: '2010.09.22',
-            '2in3v': '0.0.3'
+            '2in3v': '2.8.0'
         }, function(js, css, data) {
             assert.equal(js.length, 15);
             assert.equal(css.length, 2);
@@ -183,15 +192,16 @@ module.exports = {
         yui3.rls({
             m: 'dd,widget,gallery-yql,yui2-datatable',
             env: 'node,attribute',
+            parse: true,
             v: '3.2.0',
             gv: '2010.09.22',
-            '2in3v': '0.0.2'
+            '2in3v': '2.8.0'
         }, function(js, css, data) {
             assert.equal(js.length, 15);
             assert.equal(css.length, 2);
             js.forEach(function(v) {
                 if (v.indexOf('yui3-2in3') > -1) {
-                    assert.ok(v.indexOf('0.0.2') > 0);
+                    assert.ok(v.indexOf('2.8.0') > 0);
                 }
             });
             assert.equal([].concat(js, css).length, Object.keys(data).length);

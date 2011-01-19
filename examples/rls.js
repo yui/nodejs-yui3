@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-
-
 var start = (new Date()).getTime();
 var yui3 = require('yui3');
 yui3.rls({
