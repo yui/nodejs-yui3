@@ -1,6 +1,8 @@
 #!/usr/bin/env node
+var start = (new Date()).getTime();
 var sys = require('sys');
 var YUI = require("yui3").YUI;
+
 
 YUI({
     filter: 'debug',
@@ -42,6 +44,7 @@ YUI({
     Y.YQL('select * from github.user.info where (id = "davglass")', function(r) {
         //Do something here.
         Y.log(r.query, 'debug', 'yql');
+        Y.log((new Date()).getTime() - start + 'ms', 'info', 'TIMER');
     });
 
     var json = '{ "test": "one" }';
