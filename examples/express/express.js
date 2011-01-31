@@ -4,7 +4,7 @@ var express = require('express'),
     YUI = require('yui3').YUI;
 
 
-YUI({ debug: false, filter: 'debug' }).use('express', 'node', function(Y) {
+YUI().use('express', 'node', function(Y) {
 
     var app = express.createServer();
 
@@ -75,6 +75,7 @@ YUI({ debug: false, filter: 'debug' }).use('express', 'node', function(Y) {
             locals: {
                 content: '#content',
                 sub: {
+                    above_content: 'This was inserted above the content.',
                     title1: 'Title #1',
                     title2: 'Title #2',
                     title3: 'Title #3',
@@ -116,7 +117,8 @@ YUI({ debug: false, filter: 'debug' }).use('express', 'node', function(Y) {
         });
         res.send();
     });
-
+    
+    Y.log('Server listening: http:/'+'/localhost:3000/', 'info', 'express');
     app.listen(3000);
 
 });
