@@ -61,6 +61,8 @@ YUI({
 
     Y.log(document.parentNode, 'info', 'document.parentNode');
 
+    Y.log(document.outerHTML, 'info', 'document.outerHTML');
+
     //Y.log(document.getElementById('bax').outerHTML, 'HTML');
     
 });
