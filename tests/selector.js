@@ -487,12 +487,20 @@ var runTests = function() {
 
     var html = fs.readFileSync(__dirname + '/html/selector.html', encoding="utf-8");
     document.body.innerHTML = html;    
+    var assert = require('assert');
+    var non = {
+        passed: 1,
+        failed: 1,
+        total: 1,
+        ignored: 1,
+        duration: 1,
+        type: 1,
+        name: 1
+    };    
     Y.Test.Runner.subscribe(Y.Test.Runner.TEST_CASE_COMPLETE_EVENT, function(c) {
-        var obj = {};
-        var assert = require('assert');
         for (var i in c.results) {
-            if (i.indexOf('test') === 0) {
-                obj[i] = (function(o) {
+            if (!non[i]) {
+                module.exports[i] = (function(o) {
                     return function() {
                         if (o.result == 'fail') {
                             assert.fail(o.message);
@@ -501,7 +509,6 @@ var runTests = function() {
                 })(c.results[i]);
             }
         }
-        module.exports = obj;
     });
     runTests();
 

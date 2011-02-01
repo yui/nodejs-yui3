@@ -767,7 +767,7 @@ var runTests = function() {
         var obj = {};
         var assert = require('assert');
         for (var i in c.results) {
-            if (i.indexOf('test_') === 0) {
+            if (i.indexOf('test') === 0) {
                 obj[i] = (function(o) {
                     return function() {
                         if (o.result == 'fail') {
