@@ -14,15 +14,17 @@ YUI({
     var url2 = 'http:/'+'/localhost/~davglass/node-post/';
 
     var url3 = 'http:/'+'/localhost:8500/';
+
+    var url4 = 'https:/'+'/graph.facebook.com/davglass';
     
     Y.io(url, {
         on: {
             start: function() {
-                Y.log('Start IO', 'info', 'TEST');
+                Y.log('Start IO #1', 'info', 'io1');
             },
             success: function(id, o) {
                 //Y.log(o.responseText);
-                Y.log(sys.inspect(Y.JSON.parse(o.responseText).userinfo));
+                Y.log(sys.inspect(Y.JSON.parse(o.responseText).userinfo), 'info', 'io1');
             }
         }
     });
@@ -36,11 +38,13 @@ YUI({
         data: 'test=post&this=data&testing=three',
         on: {
             start: function() {
-                Y.log('Start IO', 'info', 'TEST');
+                Y.log('Start IO #2', 'info', 'io2');
             },
             success: function(id, o) {
-                //Y.log(o.responseText);
-                Y.log(sys.inspect(Y.JSON.parse(o.responseText)));
+                Y.log(sys.inspect(Y.JSON.parse(o.responseText)), 'info', 'io2');
+            },
+            failure: function(id, o) {
+                Y.log('IO FAILED', 'error', 'io2');
             }
         }
     });
@@ -49,10 +53,21 @@ YUI({
     Y.io(url3, {
         on: {
             start: function() {
-                Y.log('Start IO', 'info', 'TEST');
+                Y.log('Start IO #3', 'info', 'io3');
             },
             failure: function(id, o) {
-                Y.log('IO FAILED', 'error');
+                Y.log('IO FAILED', 'error', 'io3');
+            }
+        }
+    });
+
+    Y.io(url4, {
+        on: {
+            start: function() {
+                Y.log('Start IO #4', 'info', 'io4');
+            },
+            success: function(id, o) {
+                Y.log(sys.inspect(Y.JSON.parse(o.responseText)), 'info', 'io4');
             }
         }
     });
