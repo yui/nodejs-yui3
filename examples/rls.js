@@ -15,23 +15,23 @@ yui3.rls({
     //filt: 'debug',
     '2in3v': '2.8.0',
     GlobalConfig: {
-        loaderPath: __dirname + '/loader-min.js',
+        //loaderPath: __dirname + '/loader-min.js',
         debug: true
     }
-}, function(js, css, data) {
+}, function(err, data) {
     var end = (new Date()).getTime() - start;
     console.log('Callback..');
-    console.log(js);
-    console.log(css);
+    console.log(data.js);
+    console.log(data.css);
     var size = 0;
-    for (var i in data) {
-        if (data[i]) {
-            size += data[i].length;
-            console.log('i: ', i, (data[i].length));
+    for (var i in data.d) {
+        if (data.d[i]) {
+            size += data.d[i].length;
+            console.log('i: ', i, (data.d[i].length));
         }
     }
-    console.log('Total: ', [].concat(js, css).length);
-    console.log('Data: ', Object.keys(data).length);
+    console.log('Total: ', [].concat(data.js, data.css).length);
+    console.log('Data: ', Object.keys(data.d).length);
     console.log('Size: (bytes)', size);
     console.log('Time: %sms', end);
     

@@ -54,10 +54,10 @@ module.exports = {
             parse: true,
             gv: '2010.09.22',
             '2in3v': '2.8.0'
-        }, function(js, css, data) {
-            assert.equal(js.length, 33);
-            assert.equal(css.length, 4);
-            assert.equal([].concat(js, css).length, Object.keys(data).length);
+        }, function(err, data) {
+            assert.equal(data.js.length, 33);
+            assert.equal(data.css.length, 4);
+            assert.equal([].concat(data.js, data.css).length, Object.keys(data.d).length);
         });
     },
     "rls-mods": function() {
@@ -69,10 +69,10 @@ module.exports = {
             gv: '2010.09.22',
             '2in3v': '2.8.0'//,
             //filt: 'RAW',
-        }, function(js, css, data) {
-            assert.equal(js.length, 31);
-            assert.equal(css.length, 4);
-            assert.equal((js.length +  css.length), Object.keys(data).length);
+        }, function(err, data) {
+            assert.equal(data.js.length, 32);
+            assert.equal(data.css.length, 4);
+            assert.equal((data.js.length +  data.css.length), Object.keys(data.d).length);
 
         });
     },
@@ -85,10 +85,10 @@ module.exports = {
             gv: '2010.09.22',
             '2in3v': '2.8.0'//,
             //filt: 'RAW',
-        }, function(js, css, data) {
-            assert.equal(js.length, 26);
-            assert.equal(css.length, 4);
-            assert.equal([].concat(js, css).length, Object.keys(data).length);
+        }, function(err, data) {
+            assert.equal(data.js.length, 27);
+            assert.equal(data.css.length, 4);
+            assert.equal([].concat(data.js, data.css).length, Object.keys(data.d).length);
         });
     },
     "rls-filter-raw": function() {
@@ -100,11 +100,11 @@ module.exports = {
             gv: '2010.09.22',
             '2in3v': '2.8.0',
             filt: 'RAW'
-        }, function(js, css, data) {
-            assert.equal(js.length, 26);
-            assert.equal(css.length, 4);
-            assert.ok(js[0].indexOf('classnamemanager.js') > 0);
-            assert.equal([].concat(js, css).length, Object.keys(data).length);
+        }, function(err, data) {
+            assert.equal(data.js.length, 27);
+            assert.equal(data.css.length, 4);
+            assert.ok(data.js[1].indexOf('classnamemanager.js') > 0);
+            assert.equal([].concat(data.js, data.css).length, Object.keys(data.d).length);
         });
     },
     "rls-filter-min": function() {
@@ -116,11 +116,11 @@ module.exports = {
             gv: '2010.09.22',
             '2in3v': '2.8.0',
             filt: 'MIN'
-        }, function(js, css, data) {
-            assert.equal(js.length, 26);
-            assert.equal(css.length, 4);
-            assert.ok(js[0].indexOf('classnamemanager-min.js') > 0);
-            assert.equal([].concat(js, css).length, Object.keys(data).length);
+        }, function(err, data) {
+            assert.equal(data.js.length, 27);
+            assert.equal(data.css.length, 4);
+            assert.ok(data.js[1].indexOf('classnamemanager-min.js') > 0);
+            assert.equal([].concat(data.js, data.css).length, Object.keys(data.d).length);
         });
     },
     "rls-filter-debug": function() {
@@ -132,11 +132,11 @@ module.exports = {
             gv: '2010.09.22',
             '2in3v': '2.8.0',
             filt: 'DEBUG'
-        }, function(js, css, data) {
-            assert.equal(js.length, 26);
-            assert.equal(css.length, 4);
-            assert.ok(js[0].indexOf('classnamemanager-debug.js') > 0);
-            assert.equal([].concat(js, css).length, Object.keys(data).length);
+        }, function(err, data) {
+            assert.equal(data.js.length, 27);
+            assert.equal(data.css.length, 4);
+            assert.ok(data.js[1].indexOf('classnamemanager-debug.js') > 0);
+            assert.equal([].concat(data.js, data.css).length, Object.keys(data.d).length);
         });
     },
     "rls-version-33": function() {
@@ -147,11 +147,11 @@ module.exports = {
             parse: true,
             gv: '2010.09.22',
             '2in3v': '2.8.0'
-        }, function(js, css, data) {
-            assert.equal(js.length, 26);
-            assert.equal(css.length, 4);
-            assert.ok(js[0].indexOf('3.3.0') > 0);
-            assert.equal([].concat(js, css).length, Object.keys(data).length);
+        }, function(err, data) {
+            assert.equal(data.js.length, 27);
+            assert.equal(data.css.length, 4);
+            assert.ok(data.js[0].indexOf('3.3.0') > 0);
+            assert.equal([].concat(data.js, data.css).length, Object.keys(data.d).length);
         });
     },
     "rls-version-32": function() {
@@ -162,11 +162,11 @@ module.exports = {
             parse: true,
             gv: '2010.09.22',
             '2in3v': '2.8.0'
-        }, function(js, css, data) {
-            assert.equal(js.length, 15);
-            assert.equal(css.length, 2);
-            assert.ok(js[0].indexOf('3.2.0') > 0);
-            assert.equal([].concat(js, css).length, Object.keys(data).length);
+        }, function(err, data) {
+            assert.equal(data.js.length, 16);
+            assert.equal(data.css.length, 2);
+            assert.ok(data.js[0].indexOf('3.2.0') > 0);
+            assert.equal([].concat(data.js, data.css).length, Object.keys(data.d).length);
         });
     },
     "rls-version-gallery": function() {
@@ -177,15 +177,15 @@ module.exports = {
             v: '3.2.0',
             gv: '2010.09.22',
             '2in3v': '2.8.0'
-        }, function(js, css, data) {
-            assert.equal(js.length, 15);
-            assert.equal(css.length, 2);
-            js.forEach(function(v) {
+        }, function(err, data) {
+            assert.equal(data.js.length, 16);
+            assert.equal(data.css.length, 2);
+            data.js.forEach(function(v) {
                 if (v.indexOf('yui3-gallery') > -1) {
                     assert.ok(v.indexOf('2010.09.22') > 0);
                 }
             });
-            assert.equal([].concat(js, css).length, Object.keys(data).length);
+            assert.equal([].concat(data.js, data.css).length, Object.keys(data.d).length);
         });
     },
     "rls-version-yui2": function() {
@@ -196,15 +196,15 @@ module.exports = {
             v: '3.2.0',
             gv: '2010.09.22',
             '2in3v': '2.8.0'
-        }, function(js, css, data) {
-            assert.equal(js.length, 15);
-            assert.equal(css.length, 2);
-            js.forEach(function(v) {
+        }, function(err, data) {
+            assert.equal(data.js.length, 16);
+            assert.equal(data.css.length, 2);
+            data.js.forEach(function(v) {
                 if (v.indexOf('yui3-2in3') > -1) {
                     assert.ok(v.indexOf('2.8.0') > 0);
                 }
             });
-            assert.equal([].concat(js, css).length, Object.keys(data).length);
+            assert.equal([].concat(data.js, data.css).length, Object.keys(data.d).length);
         });
     }
 };
