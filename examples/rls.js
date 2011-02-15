@@ -3,21 +3,22 @@ var start = (new Date()).getTime();
 var yui3 = require('yui3');
 yui3.rls({
     //m: 'yui,loader,dd,widget,autocomplete,gallery-yql,yui2-datatable,gallery-aui-toolbar',
-    m: 'console',
+    m: 'dd',
+    env: 'yui',
     //m: 'dd,widget,autocomplete,gallery-yql,yui2-datatable',
     //env: 'node,attribute',
     //v: 'yui3-core@3.2.0',
     //v: '3.2.0',
-    gv: '2010.09.22',
-    //parse: true, //This parses the file content and returns it as the last arg
-    gmeta: __dirname + '/gallery-meta.js',
-    yui2meta: __dirname + '/2in3-meta.js',
+    //gv: '2010.09.22',
+    parse: true //This parses the file content and returns it as the last arg
+    //gmeta: __dirname + '/gallery-meta.js',
+    //yui2meta: __dirname + '/2in3-meta.js',
     //filt: 'debug',
-    '2in3v': '2.8.0',
-    GlobalConfig: {
+    //'2in3v': '2.8.0',
+    //GlobalConfig: {
         //loaderPath: __dirname + '/loader-min.js',
-        debug: true
-    }
+    //    debug: true
+    //}
 }, function(err, data) {
     var end = (new Date()).getTime() - start;
     console.log('Callback..');
