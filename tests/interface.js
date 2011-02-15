@@ -30,11 +30,11 @@ module.exports = {
         assert.notEqual(Y.GlobalConfig.base.indexOf('3.2.0'), -1);
         assert.isUndefined(Y.Loader);
     },
-    "yui3.configure({ core: '3.3.0pr3' }).YUI" : function () {
-        var Y = yui3.configure({ core: '3.3.0pr3' }).YUI;
+    "yui3.configure({ core: '3.3.0' }).YUI" : function () {
+        var Y = yui3.configure({ core: '3.3.0' }).YUI;
         assert.ok(Y);
         assert.ok(Y.GlobalConfig);
-        assert.notEqual(Y.GlobalConfig.base.indexOf('3.3.0pr3'), -1);
+        assert.notEqual(Y.GlobalConfig.base.indexOf('3.3.0'), -1);
         assert.isUndefined(Y.Loader);
     },
     "yui3.use" : function () {
