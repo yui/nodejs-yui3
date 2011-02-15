@@ -60,26 +60,77 @@ module.exports = {
             assert.equal([].concat(data.js, data.css).length, Object.keys(data.d).length);
         });
     },
+    //No ENV, should return YUI module
     "rls-mods": function() {
         yui3.rls({
             m: 'dd,widget,autocomplete,gallery-yql,yui2-datatable',
-            //env: 'node,attribute',
             v: '3.3.0',
             parse: true,
             gv: '2010.09.22',
             '2in3v': '2.8.0'//,
             //filt: 'RAW',
         }, function(err, data) {
-            assert.equal(data.js.length, 31);
+            assert.equal(data.js.length, 32);
             assert.equal(data.css.length, 4);
             assert.equal((data.js.length +  data.css.length), Object.keys(data.d).length);
 
         });
     },
+    "rls-yui-loader": function() {
+        yui3.rls({
+            m: 'yui,loader,dd',
+            v: '3.3.0'
+        }, function(err, data) {
+            assert.equal(data.js.length, 14);
+            assert.equal(data.css.length, 0);
+            assert.equal([].concat(data.js, data.css).length, Object.keys(data.d).length);
+        });
+    },
+    "rls-yui-noloader": function() {
+        yui3.rls({
+            m: 'yui,dd',
+            v: '3.3.0'
+        }, function(err, data) {
+            assert.equal(data.js.length, 13);
+            assert.equal(data.css.length, 0);
+            assert.equal([].concat(data.js, data.css).length, Object.keys(data.d).length);
+        });
+    },
+    "rls-yui-customloader-no-serve-loader": function() {
+        yui3.rls({
+            m: 'yui,dd',
+            v: '3.3.0',
+            GlobalConfig: {
+                loaderPath: __dirname + '/extras/loader-min.js'
+            }
+        }, function(err, data) {
+            assert.equal(data.Y.config.loaderPath, __dirname + '/extras/loader-min.js');
+            assert.equal(data.js.length, 13);
+            assert.equal(data.css.length, 0);
+            assert.equal([].concat(data.js, data.css).length, Object.keys(data.d).length);
+        });
+    },
+    //Custom loader should only be used on the server, it should not be served.
+    "rls-yui-customloader-serve-loader": function() {
+        yui3.rls({
+            m: 'yui,loader,dd',
+            v: '3.3.0',
+            GlobalConfig: {
+                loaderPath: __dirname + '/extras/loader-min.js'
+            }
+        }, function(err, data) {
+            assert.equal(data.Y.config.loaderPath, __dirname + '/extras/loader-min.js');
+            assert.notEqual(data.Y.config.loaderPath, data.js[1]);
+            assert.equal(data.Y.config._loaderPath, data.js[1]);
+            assert.equal(data.js.length, 14);
+            assert.equal(data.css.length, 0);
+            assert.equal([].concat(data.js, data.css).length, Object.keys(data.d).length);
+        });
+    },
     "rls-env": function() {
         yui3.rls({
             m: 'dd,widget,autocomplete,gallery-yql,yui2-datatable',
-            env: 'node,attribute',
+            env: 'yui,node,attribute',
             v: '3.3.0',
             parse: true,
             gv: '2010.09.22',
@@ -94,7 +145,7 @@ module.exports = {
     "rls-filter-raw": function() {
         yui3.rls({
             m: 'dd,widget,autocomplete,gallery-yql,yui2-datatable',
-            env: 'node,attribute',
+            env: 'yui,node,attribute',
             v: '3.3.0',
             parse: true,
             gv: '2010.09.22',
@@ -110,7 +161,7 @@ module.exports = {
     "rls-filter-min": function() {
         yui3.rls({
             m: 'dd,widget,autocomplete,gallery-yql,yui2-datatable',
-            env: 'node,attribute',
+            env: 'yui,node,attribute',
             v: '3.3.0',
             parse: true,
             gv: '2010.09.22',
@@ -126,7 +177,7 @@ module.exports = {
     "rls-filter-debug": function() {
         yui3.rls({
             m: 'dd,widget,autocomplete,gallery-yql,yui2-datatable',
-            env: 'node,attribute',
+            env: 'yui,node,attribute',
             v: '3.3.0',
             parse: true,
             gv: '2010.09.22',
@@ -142,7 +193,7 @@ module.exports = {
     "rls-version-33": function() {
         yui3.rls({
             m: 'dd,widget,autocomplete,gallery-yql,yui2-datatable',
-            env: 'node,attribute',
+            env: 'yui,node,attribute',
             v: '3.3.0',
             parse: true,
             gv: '2010.09.22',
@@ -157,7 +208,7 @@ module.exports = {
     "rls-version-32": function() {
         yui3.rls({
             m: 'dd,widget,gallery-yql,yui2-datatable',
-            env: 'node,attribute',
+            env: 'yui,node,attribute',
             v: '3.2.0',
             parse: true,
             gv: '2010.09.22',
@@ -172,7 +223,7 @@ module.exports = {
     "rls-version-gallery": function() {
         yui3.rls({
             m: 'dd,widget,gallery-yql,yui2-datatable',
-            env: 'node,attribute',
+            env: 'yui,node,attribute',
             parse: true,
             v: '3.2.0',
             gv: '2010.09.22',
@@ -191,7 +242,7 @@ module.exports = {
     "rls-version-yui2": function() {
         yui3.rls({
             m: 'dd,widget,gallery-yql,yui2-datatable',
-            env: 'node,attribute',
+            env: 'yui,node,attribute',
             parse: true,
             v: '3.2.0',
             gv: '2010.09.22',
