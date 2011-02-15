@@ -70,7 +70,7 @@ module.exports = {
             '2in3v': '2.8.0'//,
             //filt: 'RAW',
         }, function(err, data) {
-            assert.equal(data.js.length, 32);
+            assert.equal(data.js.length, 31);
             assert.equal(data.css.length, 4);
             assert.equal((data.js.length +  data.css.length), Object.keys(data.d).length);
 
