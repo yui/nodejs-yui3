@@ -28,6 +28,9 @@
         "express": ">=1.0.0",
         "connect": ">=0.2.4"
     },
+    "devDependencies": {
+        "yuitest" : "*"
+    },
     "licenses":[
         {
             "type" : "BSD",
