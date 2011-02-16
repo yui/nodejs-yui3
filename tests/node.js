@@ -4,19 +4,7 @@ var sys = require('sys'),
     fs = require('fs');
 
 var YUI = require("yui3").YUI;
-
-require("assert").equal( global.YUI, undefined, "global yui created");
-
-var debug = true;
-var argv = process.argv;
-if (argv[1].indexOf('expresso') > 0) {
-    debug = false;
-}
-//This is a hack to make YUITest execute tests in sync..
-setTimeout = function(fn, ms) {
-    fn();
-};
-
+var YUITest = require("yuitest").YUITest;
 
 YUI({
     filter: 'debug',
@@ -29,16 +17,16 @@ YUI({
         'widget': true,
         'event': true
     },
-    debug: debug
-}).useSync('selector-css3', 'node-deprecated', 'anim', 'console', 'test', 'node-event-simulate', 'node-load', function(Y) {
+    debug: false
+}).useSync('selector-css3', 'node-deprecated', 'anim', 'console', 'node-event-simulate', 'node-load', function(Y) {
 
 var document = Y.config.doc;
 var window = Y.config.win;
 
 /* {{{ */
-    var Assert = Y.Assert,
-        ArrayAssert = Y.ArrayAssert,
-        suite = new Y.Test.Suite("yuisuite");
+    var Assert = YUITest.Assert,
+        ArrayAssert = YUITest.ArrayAssert,
+        suite = new YUITest.TestSuite("yuisuite");
 
     var byId = function(id) {
         return document.getElementById(id);
@@ -46,7 +34,7 @@ var window = Y.config.win;
 
     var $ = Y.Selector.query;
 
-    suite.add( new Y.Test.Case({
+    suite.add( new YUITest.TestCase({
         name: 'Y.Node Instance',
 
         test_get: function() {
@@ -1105,7 +1093,7 @@ var window = Y.config.win;
         test_ancestor: function() {
             var node = Y.one('#test-table div div').ancestor('td');
 
-            Y.Assert.areEqual(byId('test-td'), node._node,
+            Assert.areEqual(byId('test-td'), node._node,
                "Y.one('#test-table div').ancestor('td'))"); 
 
             node = Y.Node.create('<div><div><table><tbody><tr></tr><tr></tr><tr><td><div><div class="inner"></div></div></td></tr></tbody></table></div></div>');
@@ -1256,7 +1244,6 @@ var window = Y.config.win;
             Y.one('head').prepend(html);
             Assert.isNotNull(document.getElementById('dyn-link-3'));
         },
-        */
 
         test_focus: function () {
             var button = document.createElement('button');
@@ -1267,6 +1254,7 @@ var window = Y.config.win;
             // exception.
             Y.one(button).focus();
         },
+        */
 
         'should hide the node': function() {
             var node = Y.one('body');
@@ -1289,15 +1277,17 @@ var window = Y.config.win;
             node.set('text', 'foo');
             Assert.areEqual('foo', node.get('text'));
         },
-
+        
         'should append to the given node': function() {
             var node = Y.Node.create('<div/>');
             node.appendTo(Y.one('body'));
+            Assert.areEqual(node.get('parentNode.tagName'), 'BODY');
         },
 
         'should append to the given DOM node': function() {
             var node = Y.Node.create('<div/>');
             node.appendTo(document.body);
+            Assert.areEqual(node.get('parentNode.tagName'), 'BODY');
         },
 
         'should wrap the node with the given html': function() {
@@ -1512,36 +1502,11 @@ var window = Y.config.win;
         }
     })); 
 
-    Y.Test.Runner.add(suite);
+    YUITest.TestRunner.add(suite);
 
 /* }}} */
 
     var html = fs.readFileSync(__dirname + '/html/node.html', encoding="utf-8");
     document.body.innerHTML = html;
-    var assert = require('assert');
-    var non = {
-        passed: 1,
-        failed: 1,
-        total: 1,
-        ignored: 1,
-        duration: 1,
-        type: 1,
-        name: 1
-    };
-    Y.Test.Runner.subscribe(Y.Test.Runner.TEST_CASE_COMPLETE_EVENT, function(c) {
-        for (var i in c.results) {
-            if (!non[i]) {
-                module.exports[i] = (function(o) {
-                    return function() {
-                        if (o.result == 'fail') {
-                            assert.fail(o.message);
-                        }
-                    }
-                })(c.results[i]);
-            }
-        }
-    });
-    Y.Test.Runner.run();
-
 });
 

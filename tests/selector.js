@@ -3,18 +3,7 @@ var sys = require('sys'),
     fs = require('fs');
 
 var YUI = require("yui3").YUI;
-
-require("assert").equal( global.YUI, undefined, "global yui created");
-
-var debug = true;
-var argv = process.argv;
-if (argv[1].indexOf('expresso') > 0) {
-    debug = false;
-}
-//This is a hack to make YUITest execute tests in sync..
-setTimeout = function(fn, ms) {
-    fn();
-};
+var YUITest = require("yuitest").YUITest;
 
 YUI({
     filter: 'debug',
@@ -28,7 +17,7 @@ YUI({
         'widget': true,
         'event': true
     },
-    debug: debug
+    debug: false
 }).useSync('event', 'dom-deprecated', 'node-base', 'test', 'selector-css3', function(Y) {
     var document = Y.Browser.document;
     var window = Y.Browser.window;
@@ -128,10 +117,10 @@ var runTests = function() {
             }
         };
 
-        var suite = new Y.Test.Suite("Selector Suite");
+        var suite = new YUITest.TestSuite("Selector Suite");
         var Selector = Y.Selector;
-        var Assert = Y.Assert;
-        var ArrayAssert = Y.ArrayAssert;
+        var Assert = YUITest.Assert;
+        var ArrayAssert = YUITest.ArrayAssert;
 
         var $ = Selector.query;
         var demo = Y.Dom.get('demo');
@@ -139,7 +128,7 @@ var runTests = function() {
         var demoFirstChild = children[0];
         var demoLastChild = children[children.length - 1];
 
-        var selectorQueryAll = new Y.Test.Case({
+        var selectorQueryAll = new YUITest.TestCase({
             name: 'Query All',
 
             testFilter: function() {
@@ -233,6 +222,7 @@ var runTests = function() {
                 ArrayAssert.itemsAreEqual([], $('#root-test li', Y.Dom.get('nth-test')), 'id selector w/root false pos');
                 
             },
+            /*
             testNthType: function() {
                 var all = Y.Dom.get('nth-test').getElementsByTagName('li');
                 var odd = Y.Dom.getElementsByClassName('odd', 'li', 'nth-test');
@@ -257,6 +247,7 @@ var runTests = function() {
                     //"$('#nth-type-test div:nth-of-type(2n)')");
 
             },
+            */
             testNthChild: function() {
                 var all = Y.Dom.get('nth-test').getElementsByTagName('li');
                 var odd = Y.Dom.getElementsByClassName('odd', 'li', 'nth-test');
@@ -349,7 +340,7 @@ var runTests = function() {
 
         });
 
-        var simpleTest = new Y.Test.Case({
+        var simpleTest = new YUITest.TestCase({
             name: 'Simple Node Test',
 
             _testPseudo: function() { //Not sure why these are failing..
@@ -478,8 +469,7 @@ var runTests = function() {
 
         suite.add(selectorQueryAll);
         suite.add(simpleTest);
-        Y.Test.Runner.add(suite);
-        Y.Test.Runner.run();
+        YUITest.TestRunner.add(suite);
 };
 
 /* }}} */
@@ -487,29 +477,6 @@ var runTests = function() {
 
     var html = fs.readFileSync(__dirname + '/html/selector.html', encoding="utf-8");
     document.body.innerHTML = html;    
-    var assert = require('assert');
-    var non = {
-        passed: 1,
-        failed: 1,
-        total: 1,
-        ignored: 1,
-        duration: 1,
-        type: 1,
-        name: 1
-    };    
-    Y.Test.Runner.subscribe(Y.Test.Runner.TEST_CASE_COMPLETE_EVENT, function(c) {
-        for (var i in c.results) {
-            if (!non[i]) {
-                module.exports[i] = (function(o) {
-                    return function() {
-                        if (o.result == 'fail') {
-                            assert.fail(o.message);
-                        }
-                    }
-                })(c.results[i]);
-            }
-        }
-    });
     runTests();
 
 

@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 var sys = require('sys'),
     fs = require('fs');
 
@@ -19,7 +17,7 @@ YUI({
         'event': true
     },
     debug: false
-}).useSync('dom-deprecated', 'node-base', 'selector-css3', function(Y) {
+}).useSync('dom-deprecated', 'dom-style', 'node-base', 'selector-css3', 'json-stringify', function(Y) {
     var document = Y.Browser.document;
     var window = Y.Browser.window;
 
@@ -754,24 +752,6 @@ var runTests = function() {
 
     var html = fs.readFileSync(__dirname + '/html/dom.html', encoding="utf-8");
     document.body.innerHTML = html;
-    /*
-    Y.Test.Runner.subscribe(Y.Test.Runner.TEST_CASE_COMPLETE_EVENT, function(c) {
-        var obj = {};
-        var assert = require('assert');
-        for (var i in c.results) {
-            if (i.indexOf('test') === 0) {
-                obj[i] = (function(o) {
-                    return function() {
-                        if (o.result == 'fail') {
-                            assert.fail(o.message);
-                        }
-                    }
-                })(c.results[i]);
-            }
-        }
-        module.exports = obj;
-    });
-    */
     runTests();
     
 
