@@ -10,7 +10,8 @@
         "Robert Tsai <rob+github@tsaiberspace.net>",
         "Bart Teeuwisse <bart.teeuwisse@thecodemill.biz> (http://thecodemill.biz/)",
         "Phil Dokas <pdokas@organic.com>",
-        "Standa Opichal <opichals@gmail.com>"
+        "Standa Opichal <opichals@gmail.com>",
+        "Reid Burke <me@reidburke.com>"
     ],
     "engines": {
         "node" : ">=0.2.0"
