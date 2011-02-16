@@ -110,6 +110,20 @@ module.exports = {
             assert.equal([].concat(data.js, data.css).length, Object.keys(data.d).length);
         });
     },
+    "rls-yui-customloader-debug": function() {
+        yui3.rls({
+            m: 'yui,dd',
+            v: '3.3.0',
+            GlobalConfig: {
+                loaderPath: __dirname + '/extras/loader-debug.js'
+            }
+        }, function(err, data) {
+            assert.equal(data.Y.config.loaderPath, __dirname + '/extras/loader-debug.js');
+            assert.equal(data.js.length, 13);
+            assert.equal(data.css.length, 0);
+            assert.equal([].concat(data.js, data.css).length, Object.keys(data.d).length);
+        });
+    },
     //Custom loader should only be used on the server, it should not be served.
     "rls-yui-customloader-serve-loader": function() {
         yui3.rls({
