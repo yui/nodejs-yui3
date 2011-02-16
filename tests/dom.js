@@ -5,18 +5,7 @@ var sys = require('sys'),
 
 var YUI = require("yui3").YUI;
 
-require("assert").equal( global.YUI, undefined, "global yui created");
-
-var debug = true;
-var argv = process.argv;
-if (argv[1].indexOf('expresso') > 0) {
-    debug = false;
-}
-//This is a hack to make YUITest execute tests in sync..
-setTimeout = function(fn, ms) {
-    fn();
-};
-
+var YUITest = require("yuitest").YUITest;
 
 YUI({
     filter: 'debug',
@@ -29,16 +18,17 @@ YUI({
         'widget': true,
         'event': true
     },
-    debug: debug
-}).useSync('dom-deprecated', 'node-base', 'test', 'selector-css3', function(Y) {
+    debug: false
+}).useSync('dom-deprecated', 'node-base', 'selector-css3', function(Y) {
     var document = Y.Browser.document;
     var window = Y.Browser.window;
 
 /* {{{ DOM Test Suite */
 var runTests = function() {
-        var Assert = Y.Assert,
-            ArrayAssert = Y.ArrayAssert,
-            suite = new Y.Test.Suite("yuisuite");
+    
+        var Assert = YUITest.Assert,
+            ArrayAssert = YUITest.ArrayAssert,
+            suite = new YUITest.TestSuite("yuisuite");
 
         window.Y = Y; // export Y global for Selenium
 
@@ -57,7 +47,7 @@ var runTests = function() {
             foo = document.getElementById('foo'),
             tmp = document.createElement('div');
 
-        suite.add( new Y.Test.Case({
+        suite.add( new YUITest.TestCase({
             name: 'DOM',
 
             test_byId: function() {
@@ -419,7 +409,7 @@ var runTests = function() {
                 Assert.areEqual(bd, Y.DOM.ancestor(bd, null, true), 'ancestor(bd, true)');
             },
 
-
+            /*
             test_insertBefore: function() {
                 //Assert.areEqual(Y.DOM.insertBefore(ft, hd), Y.DOM.firstChild(doc), 'insertBefore(ft, hd)');
                 //Assert.areEqual(ft, Y.DOM.firstChild(doc), 'insertBefore(ft, hd)');
@@ -430,6 +420,7 @@ var runTests = function() {
                 //Assert.areEqual(Y.DOM.insertAfter(hd, ft), ft.nextSibling, 'insertAfter(hd, ft)');
                 //Assert.areEqual(hd, ft.nextSibling, 'insertAfter(hd, ft)');
             },
+            */
 
             test_getAttribute: function() {
                 var node = Y.DOM.byId('doc');
@@ -753,8 +744,8 @@ var runTests = function() {
 
             }
         })); 
-        Y.Test.Runner.add(suite);
-        Y.Test.Runner.run();
+        YUITest.TestRunner.add(suite);
+        //YUITest.TestRunner.run();
 
 };
 
@@ -763,6 +754,7 @@ var runTests = function() {
 
     var html = fs.readFileSync(__dirname + '/html/dom.html', encoding="utf-8");
     document.body.innerHTML = html;
+    /*
     Y.Test.Runner.subscribe(Y.Test.Runner.TEST_CASE_COMPLETE_EVENT, function(c) {
         var obj = {};
         var assert = require('assert');
@@ -779,6 +771,7 @@ var runTests = function() {
         }
         module.exports = obj;
     });
+    */
     runTests();
     
 
