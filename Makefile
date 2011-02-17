@@ -17,6 +17,9 @@ base: deps
 publish: deps install test
 	@./scripts/publish.sh
 
+dev: deps clean full install
+	@echo "make clean && make full && make install: DONE"
+
 test: deps
 	@./scripts/test.sh
 
