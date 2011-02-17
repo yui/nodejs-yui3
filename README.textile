@@ -14,7 +14,7 @@ h2. Node.js
 
 All of the examples and tests assume you have @node@ in your path and they are all executable.
 
-h2. Dependancies
+h2. Dependencies
 
 All dependencies are installed when you install the yui3 package via @npm@
 
@@ -94,11 +94,11 @@ h2. Tests
 
 When using JSDom, All relevent YUI 3 Dom & Selector tests pass. The ones that are skipped revolve around styles and postioning. Since there is no window or CSS cascade, these seem unimportant at the moment.
 
-Testing is pretty simple now once you install `expresso`:
+Testing is pretty simple now once you install `yuitest`:
 
 <pre class="console">
-    npm install expresso
-    expresso ./tests/*.js
+    npm install yuitest
+    yuitest ./tests/*.js
 </pre>
 
 h2. License
