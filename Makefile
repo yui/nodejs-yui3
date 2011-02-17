@@ -1,4 +1,4 @@
-all: deps
+all: deps clean
 	@./scripts/make_package.sh bare
 	@./scripts/make_package.sh base
 	@./scripts/make_package.sh full

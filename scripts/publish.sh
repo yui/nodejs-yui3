@@ -13,7 +13,7 @@ for dir in ./*; do
     if test -f $dir/package.json; then
         echo "Publishing from: $dir";
         echo "npm publish $dir/"
-        #npm install $dir/ --silent
+        npm publish $dir/
     fi
 done
 
