@@ -1,6 +1,6 @@
 {
     "name": "yui3-base",
-    "description": "YUI 3 Library on NodeJS - Base - Includes yui3-core dependency",
+    "description": "YUI 3 Library on NodeJS - Base - Includes yui3-core dependency - NO DOM SUPPORT",
     "dependencies": {
         "yui3-core": ">=3.3.0"
     },
