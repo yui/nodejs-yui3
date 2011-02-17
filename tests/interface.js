@@ -141,7 +141,7 @@ suite.add( new YUITest.TestCase({
         };
         this.wait(w, 50);
     },
-    "rls yui noloader": function() {
+    "rls yui one module and noloader": function() {
         var loaded = false;
         yui3.rls({
             m: 'yui,dd',
@@ -149,6 +149,24 @@ suite.add( new YUITest.TestCase({
         }, function(err, data) {
             loaded = true;
             Assert.areEqual(data.js.length, 13);
+            Assert.areEqual(data.css.length, 0);
+            Assert.areEqual([].concat(data.js, data.css).length, Object.keys(data.d).length);
+        });
+        var w = function() {
+            if (!loaded) {
+                this.wait(w, 50);
+            }
+        };
+        this.wait(w, 50);
+    },
+    "rls yui only": function() {
+        var loaded = false;
+        yui3.rls({
+            m: 'yui',
+            v: '3.3.0'
+        }, function(err, data) {
+            loaded = true;
+            Assert.areEqual(data.js.length, 1);
             Assert.areEqual(data.css.length, 0);
             Assert.areEqual([].concat(data.js, data.css).length, Object.keys(data.d).length);
         });
