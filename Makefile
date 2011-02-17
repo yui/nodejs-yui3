@@ -28,4 +28,7 @@ deps: ./scripts/deps.sh
 clean:
 	rm -rRf ./build/
 
-.PHONY: install test bare
+help:
+	@cat ./INSTALL
+
+.PHONY: all install test bare base full publish clean deps test help

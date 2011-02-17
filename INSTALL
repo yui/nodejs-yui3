@@ -1,0 +1,31 @@
+This repository includes 3 yui3 npm packages. bare, base and full.
+
+Bare:
+    This package is just the contents of this repository with a package.json file that
+    contains no dependencies. This package should only be used if you are providing your
+    own special yui3-core package.
+
+Base:
+    This package is the contents of this directory with the dependency of yui3-core. This
+    package assumes you are running YUI3 inside of NodeJS without needing DOM. Even tho
+    DOM support is in this package, jsom and other dependencies will not be installed.
+
+Full:
+    The original YUI3 source package that requires the dependencies required for using DOM
+    on the server.
+
+
+Installation:
+
+    make:   Will make all 3 packages
+    make && make install:   Will make all 3 packages and install them via npm
+
+    make bare:  Will only make the bare package
+    make base:  Will only make the base package
+    make full:  Will only make the full package
+
+    make full && make install: Will make the full package and install it
+
+    make clean: Will delete the ./build directory
+
+    make test: Will run the yuitest's for this project
