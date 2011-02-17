@@ -1,0 +1,12 @@
+{
+    "name": "yui3-bare",
+    "description": "YUI 3 Library on NodeJS - Bare - No Dependencies",
+    "devDependencies": {
+        "yui3-core": ">=3.3.0",
+        "jsdom": ">=0.1.23", 
+        "htmlparser": ">=1.6.2",
+        "express": ">=1.0.0",
+        "connect": ">=0.2.4",
+        "yuitest" : "*"
+    }
+}

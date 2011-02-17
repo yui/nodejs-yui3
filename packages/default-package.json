@@ -1,0 +1,31 @@
+{
+    "version": "0.5.26",
+    "author": "Dav Glass <davglass@gmail.com>",
+    "bugs": { "web" : "http://github.com/davglass/nodejs-yui3/issues" },
+    "os": ["darwin", "linux"],
+    "contributors": [
+        "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)",
+        "Robert Tsai <rob+github@tsaiberspace.net>",
+        "Bart Teeuwisse <bart.teeuwisse@thecodemill.biz> (http://thecodemill.biz/)",
+        "Phil Dokas <pdokas@organic.com>",
+        "Standa Opichal <opichals@gmail.com>",
+        "Reid Burke <me@reidburke.com>"
+    ],
+    "engines": {
+        "node" : ">=0.2.0"
+    },
+    "directories": {
+        "lib" : "lib"
+    },
+    "main": "./lib/node-yui3",
+    "licenses":[
+        {
+            "type" : "BSD",
+            "url" : "http://developer.yahoo.com/yui/license.html"
+        }
+    ],
+    "repository": {
+        "type":"git",
+        "url":"http://github.com/davglass/nodejs-yui3.git"
+    }
+}
