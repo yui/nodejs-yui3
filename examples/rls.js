@@ -7,6 +7,7 @@ yui3.rls({
     //m: 'yui,loader,dd',
     //m: 'dd',
     m: 'loader,dd,widget,autocomplete,gallery-yql,yui2-datatable',
+    //m: 'yui',
     //env: 'yui',
     //m: 'dd,widget,autocomplete,gallery-yql,yui2-datatable',
     //env: 'node,attribute',
