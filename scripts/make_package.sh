@@ -23,9 +23,10 @@ cp LICENSE $dir
 wait
 cp -R lib $dir
 wait
+cp ./cli.js $dir
+wait
 cp ./packages/$pack-package.json ${dir}package.json
 wait
 ./scripts/merge_package_json.js $pack
 wait
-cd $dir
 echo "Build Complete: $dir"
