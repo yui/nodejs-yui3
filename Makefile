@@ -23,6 +23,9 @@ dev: deps clean full install
 test: deps
 	@./scripts/test.sh
 
+tests: test
+isntall: install
+
 install: deps
 	@./scripts/install.sh
 
