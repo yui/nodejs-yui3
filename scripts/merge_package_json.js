@@ -36,7 +36,10 @@ for (var i in other) {
     main[i] = other[i];
 }
 
-var outData = sys.inspect(main, false, Infinity);
+//var outData = sys.inspect(main, false, Infinity);
+var outData = JSON.stringify(main);
+
+outData = outData.replace(/,/g, ',\n\t').replace(/{/g, '{\n').replace(/\[/g, '[\n');
 
 if (exists('./build/' + pack)) {
     fs.writeFileSync(path.join('./build/', pack, 'package.json'), outData);
