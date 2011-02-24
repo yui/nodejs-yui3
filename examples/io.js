@@ -15,8 +15,8 @@ YUI({
 
     var url3 = 'http:/'+'/localhost:8500/';
 
-    var url4 = 'https:/'+'/graph.facebook.com/davglass';
-    
+    var url4 = 'https:/'+'/graph.facebook.com:443/davglass';
+
     Y.io(url, {
         on: {
             start: function() {
@@ -49,7 +49,6 @@ YUI({
         }
     });
     
-
     Y.io(url3, {
         on: {
             start: function() {
