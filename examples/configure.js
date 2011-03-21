@@ -2,8 +2,7 @@
 
 
 var YUIConfig = {
-    //core: '3.2.0',
-    core: '3.3.0pr3',
+    core: '3.3.0',
     gallery: '2010.09.22',
     '2in3': '0.0.3'
 };
