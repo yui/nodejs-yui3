@@ -74,6 +74,37 @@ suite.add( new YUITest.TestCase({
             Assert.isObject(Y.Loader);
             next();
         });
+    }),
+    "yui3 no gallery" : async(function (data, next) {
+        yui3.configure({ debug: false, gallery: false }).use("loader", function (Y) {
+            Assert.isUndefined(Y.config.groups.gallery);
+            Assert.isObject(Y.Loader);
+            next();
+        });
+    }),
+    "yui3 no 2in3" : async(function (data, next) {
+        yui3.configure({ debug: false, '2in3': false }).use("loader", function (Y) {
+            Assert.isUndefined(Y.config.groups.yui2);
+            Assert.isObject(Y.Loader);
+            next();
+        });
+    }),
+    "yui3 no 2in3 and no gallery" : async(function (data, next) {
+        yui3.configure({ debug: false, '2in3': false, gallery: false }).use("loader", function (Y) {
+            Assert.isUndefined(Y.config.groups.gallery);
+            Assert.isUndefined(Y.config.groups.yui2);
+            Assert.isObject(Y.Loader);
+            next();
+        });
+    }),
+    "yui3 no 2in3 and no gallery" : async(function (data, next) {
+        var core = require('yui3-core@3.3.0');
+        yui3.configure({ debug: false, '2in3': false, gallery: false, yuiPath: core.path(), yuiCoreFile: 'build/yui/yui-debug.js' }).use("loader", function (Y) {
+            Assert.isUndefined(Y.config.groups.gallery);
+            Assert.isUndefined(Y.config.groups.yui2);
+            Assert.isObject(Y.Loader);
+            next();
+        });
     })
 }));
 
