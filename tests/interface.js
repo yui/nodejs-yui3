@@ -105,8 +105,29 @@ suite.add( new YUITest.TestCase({
             Assert.isObject(Y.Loader);
             next();
         });
+    }),
+    "imageloader test" : async(function (data, next) {
+        var core = require('yui3-core@3.3.0');
+        yui3.configure({ debug: false, '2in3': false, gallery: false, yuiPath: core.path(), yuiCoreFile: 'build/yui/yui-debug.js' }).use("imageloader", function (Y) {
+            Assert.isUndefined(Y.config.groups.gallery);
+            Assert.isUndefined(Y.config.groups.yui2);
+            Assert.isObject(Y.Loader);
+            Assert.isObject(Y.ImgLoadGroup);
+            next();
+        });
+    }),
+    "uploader test" : async(function (data, next) {
+        var core = require('yui3-core@3.3.0');
+        yui3.configure({ debug: false, '2in3': false, gallery: false, yuiPath: core.path(), yuiCoreFile: 'build/yui/yui-debug.js' }).use("uploader", function (Y) {
+            Assert.isUndefined(Y.config.groups.gallery);
+            Assert.isUndefined(Y.config.groups.yui2);
+            Assert.isObject(Y.Loader);
+            Assert.isObject(Y.Uploader);
+            next();
+        });
     })
 }));
+
 
 suite.add( new YUITest.TestCase({
     name: 'RLS',
@@ -360,8 +381,29 @@ suite.add( new YUITest.TestCase({
             Assert.areEqual([].concat(data.js, data.css).length, Object.keys(data.d).length);
             next();
         });
+    }),
+    "rls imageloader": async(function(data, next) {
+        yui3.rls({
+            m: 'imageloader',
+            env: 'yui',
+            v: '3.3.0'
+        }, function(err, data) {
+            Assert.isArray(data.js);
+            Assert.areEqual(11, data.js.length, 'Not enough files returned');
+            next();
+        });
+    }),
+    "rls uploader": async(function(data, next) {
+        yui3.rls({
+            m: 'uploader',
+            env: 'yui',
+            v: '3.3.0'
+        }, function(err, data) {
+            Assert.isArray(data.js);
+            Assert.areEqual(13, data.js.length, 'Not enough files returned');
+            next();
+        });
     })
 }));
-
 
 YUITest.TestRunner.add(suite);
