@@ -1,5 +1,5 @@
 {
-    "version": "0.5.33",
+    "version": "0.5.34",
     "author": "Dav Glass <davglass@gmail.com>",
     "bugs": { "web" : "http://github.com/davglass/nodejs-yui3/issues" },
     "os": ["darwin", "linux"],
@@ -12,7 +12,7 @@
         "Reid Burke <me@reidburke.com>"
     ],
     "engines": {
-        "node" : ">=0.2.0"
+        "node" : ">=0.4.0"
     },
     "directories": {
         "lib" : "lib"
