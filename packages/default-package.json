@@ -14,6 +14,9 @@
     "engines": {
         "node" : ">=0.4.0"
     },
+    "scripts": {
+        "test": "make tests"
+    },
     "directories": {
         "lib" : "lib"
     },

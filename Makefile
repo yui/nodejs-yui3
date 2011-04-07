@@ -2,8 +2,6 @@ all: deps clean bare base full
 
 full: deps
 	@./scripts/make_package.sh full
-	cp ./build/full/package.json ./
-
 
 bare: deps
 	@./scripts/make_package.sh bare
@@ -23,7 +21,7 @@ test: deps
 tests: test
 isntall: install
 
-install: deps
+install: deps all
 	@./scripts/install.sh
 
 deps: ./scripts/deps.sh
